@@ -6,7 +6,7 @@ description: Owns the portfolio of channel projects and their shared launch play
 owners: ["@millibitonline"]
 
 projects:
-  - projects/wandering-blue-moon/.aios.yaml
+  - projects/travel-lava/.aios.yaml
 
 launch:
   template: templates/channel

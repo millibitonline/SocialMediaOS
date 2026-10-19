@@ -1,15 +1,9 @@
-# Creative Direction — Wandering Blue Moon
+# Creative Direction — Travel Lava
 
 **Owner role:** creative-director (Claude) · **Status:** awaiting strategy (Phase 2)
 
 > Creative direction follows strategy. The sections below are filled after
 > STRATEGY.md is accepted. Nothing here is approved.
-
-## Name notes (creative-director, for discussion — not a decision)
-"Wandering Blue Moon" pairs **movement** (wandering: travel, drifting, curiosity)
-with **rarity** (a blue moon: something that doesn't happen often). That
-suggests a voice built around unhurried discovery and moments worth stopping
-for. Strategy may point elsewhere; this is only a starting prompt.
 
 ## Voice and tone
 - Voice in three words: _TBD_

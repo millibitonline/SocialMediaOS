@@ -1,4 +1,4 @@
-# Wandering Blue Moon
+# Travel Lava
 
 **Project** in SocialMediaOS · **Team:** Channels · **Status:** planning
 

@@ -27,16 +27,37 @@ agents:
     root_instructions: AGENTS.md
     agent_specific_instructions: true   # e.g. CLAUDE.md alongside AGENTS.md
     walk_parents: true
+  handoff_protocol: aios/agents/HANDOFF_PROTOCOL.md
   constraints:
     can_merge: false
     can_approve_gates: false
     must_label_generated_content: true
+    may_change_other_roles_decisions: false
+
+# How contributors coordinate. GitHub is both the source of truth and the
+# communication layer: issues = tasks/hand-offs, PRs = proposed changes,
+# Markdown = decisions and strategy, ADRs = significant decisions.
+coordination:
+  platform: github
+  tasks_and_handoffs: issues
+  proposed_changes: pull_requests
+  decisions: markdown_and_adr
+  handoff_required_fields:
+    - objective
+    - context
+    - deliverables
+    - acceptance_criteria
+    - assigned_role
+    - status
+    - decisions_requiring_approval
+  statuses: [ready, in-progress, blocked, in-review, done]
 
 documents:
   - aios/governance/OPERATING_PRINCIPLES.md
   - aios/governance/GOVERNANCE.md
   - aios/governance/INHERITANCE.md
   - aios/governance/APPROVALS.md
+  - aios/agents/HANDOFF_PROTOCOL.md
 
 # Keys no descendant may change.
 locks:
@@ -50,3 +71,5 @@ locks:
   - agents.constraints.can_merge
   - agents.constraints.can_approve_gates
   - agents.constraints.must_label_generated_content
+  - agents.constraints.may_change_other_roles_decisions
+  - coordination.handoff_required_fields

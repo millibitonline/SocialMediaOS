@@ -23,6 +23,9 @@ On starting any task, an agent must:
 4. Confirm the task falls inside its role's `responsibilities`. If not, stop and
    propose a hand-off.
 
+Agents discover work through GitHub: open issues labeled `role:<their-role>` and
+`status:ready`, review requests on PRs, and comments that mention their role.
+
 ## 3. Conduct
 - **Work in branches.** Never commit to `main`. Never merge.
 - **Stay in lane.** Only modify paths your role's `writes` scope allows. Other paths
@@ -39,12 +42,14 @@ On starting any task, an agent must:
   and connecting integrations require a recorded human approval
   ([../governance/APPROVALS.md](../governance/APPROVALS.md)).
 
-## 4. Hand-offs
-A hand-off is an issue or PR that names:
-- the receiving role,
-- the inputs (file paths, links),
-- the expected output and its location,
-- the acceptance criteria.
+## 4. Hand-offs and ownership
+Hand-offs follow [HANDOFF_PROTOCOL.md](HANDOFF_PROTOCOL.md): a GitHub Issue with
+objective, context & references, deliverables, acceptance criteria, assigned
+role, status, and decisions requiring approval.
+
+Each decision has one owning role (`owns_decisions` in the registry). Agents never
+edit another role's decision; they propose the change through a hand-off labeled
+`needs:decision`.
 
 ## 5. Escalation
 Agents escalate to a human Owner when: rules conflict, an approval is ambiguous, a

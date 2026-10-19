@@ -19,7 +19,7 @@ a reusable, platform-independent operating system for human + AI organizations.
 ├──────────────────────────────────────────────────────────────┤
 │ Team          organization/teams/channels/                     │
 ├──────────────────────────────────────────────────────────────┤
-│ Project       projects/<channel>/          e.g. wandering-blue-moon │
+│ Project       projects/<channel>/          e.g. travel-lava │
 ├──────────────────────────────────────────────────────────────┤
 │ Feature       projects/<channel>/features/<feature>/           │
 ├──────────────────────────────────────────────────────────────┤
@@ -41,15 +41,26 @@ override* and fails CI. Full rules: [aios/governance/INHERITANCE.md](aios/govern
 
 ### Who does what
 
-| Contributor | Role | Owns |
-|-------------|------|------|
-| ChatGPT | strategist | Strategy, architecture, roadmaps, channel positioning |
-| Claude | creative-director | Creative direction, voice, content development |
-| Antigravity | engineer | Engineering, automation, CI, integration design |
-| Human owner | human-owner | Approvals (architecture, publish, spend, integrations), merges |
+| Role | Currently bound to | Owns |
+|------|--------------------|------|
+| strategist | ChatGPT | Strategy, business models, research, architecture, evaluation |
+| creative-director | Claude | Creative direction, content development, documentation, implementation support |
+| engineer | Antigravity | Engineering, automation, integrations, testing |
+| human-owner | @millibitonline | Approvals (architecture, publish, spend, integrations), merges, disputes |
 
-Agents propose via branches and PRs; only humans approve gates and merge.
+Roles are configurable: bindings live only in `.aios.yaml` → `contributors:`.
+Agents propose via branches and PRs. Only humans approve gates and merge.
 Instructions: [AGENTS.md](AGENTS.md) (all agents), [CLAUDE.md](CLAUDE.md) (Claude).
+
+### How agents collaborate
+GitHub is the coordination layer. **Issues** carry tasks and hand-offs,
+**pull requests** carry proposed changes, **Markdown and ADRs** hold decisions,
+and **comments, commits, and reviews** are the conversation. Each hand-off states
+its objective, context, deliverables, acceptance criteria, assigned role, status,
+and the decisions that need approval. Each decision has one owning role, and
+nobody edits another role's decision. Coordination is manual for now: the owner
+starts agent sessions and relays between agents. Automation comes later through
+an ADR. Full model and worked example: [docs/OPERATING_MODEL.md](docs/OPERATING_MODEL.md).
 
 ## Operating model
 
@@ -80,7 +91,8 @@ organization/
   capabilities/                 content-production, publishing, analytics, financial-reporting
   teams/channels/               Channels team + launch playbook
 templates/channel/              Copy to start a new channel
-projects/wandering-blue-moon/   First channel (planning)
+projects/travel-lava/   First channel (planning)
+docs/OPERATING_MODEL.md         How agents discover work, hand off, and review
 docs/adr/                       Architecture decision records
 scripts/validate_aios.py        Inheritance validator (runs in CI)
 .github/                        CI, PR template, CODEOWNERS, issue templates

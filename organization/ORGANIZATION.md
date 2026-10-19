@@ -10,7 +10,7 @@ social-media-specific structure on top.
 Foundation   aios/                                   (inherited, unchanged)
 Organization /.aios.yaml + organization/             SocialMediaOS
 Team         organization/teams/channels/            owns all channel projects
-Project      projects/<channel>/                     one per channel (e.g. wandering-blue-moon)
+Project      projects/<channel>/                     one per channel (e.g. travel-lava)
 Feature      projects/<channel>/features/<feature>/  a deliverable (launch, a series, a campaign)
 Task         rows in FEATURE.md or GitHub Issues     leaf work items
 Contributor  ChatGPT · Claude · Antigravity · human owner
@@ -18,12 +18,20 @@ Contributor  ChatGPT · Claude · Antigravity · human owner
 
 ## Contributors and responsibilities
 
-| Contributor | AIOS role | Owns | Never does |
-|-------------|-----------|------|------------|
-| **ChatGPT** | strategist | Strategy, architecture, roadmaps, channel positioning, ADR drafts | Write final content, change automation, merge |
-| **Claude** | creative-director | Creative direction, voice, content ideation and development, editorial calendars | Change governance or tooling, publish, merge |
-| **Antigravity** | engineer | Repo tooling, validation, CI, automation, integration design, data pipelines | Connect production systems without `gate:integration`, publish, merge |
-| **Human owner** | human-owner | Approvals for architecture, publishing, spend, integrations; merges | — |
+Roles are bound to agents in the root `.aios.yaml` (`contributors:`), so they
+can be reassigned without touching anything else.
+
+| AIOS role | Currently bound to | Owns | Never does |
+|-----------|--------------------|------|------------|
+| strategist | **ChatGPT** | Strategy, business models, research, architecture, evaluation | Write final content, change automation, merge |
+| creative-director | **Claude** | Creative direction, content development, documentation, implementation support | Change other roles' decisions, publish, merge |
+| engineer | **Antigravity** | Engineering, automation, integrations, testing | Connect production systems without `gate:integration`, publish, merge |
+| human-owner | **@millibitonline** | Approvals for architecture, publishing, spend, integrations; merges; disputes | — |
+
+Agents coordinate through GitHub issues (hand-offs), pull requests (proposed
+changes), and Markdown/ADRs (decisions). See
+[docs/OPERATING_MODEL.md](../docs/OPERATING_MODEL.md) and the
+[hand-off protocol](../aios/agents/HANDOFF_PROTOCOL.md).
 
 ## Shared capabilities
 Capabilities are organization-owned services that every channel consumes. Each

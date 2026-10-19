@@ -1,6 +1,6 @@
 layer: project
-id: wandering-blue-moon
-name: Wandering Blue Moon
+id: travel-lava
+name: Travel Lava
 parent: organization/teams/channels/.aios.yaml
 status: planning
 owners: ["@millibitonline"]

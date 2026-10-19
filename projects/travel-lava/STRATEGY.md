@@ -1,8 +1,8 @@
-# Strategy — Wandering Blue Moon
+# Strategy — Travel Lava
 
 **Owner role:** strategist (ChatGPT) · **Status:** not started (Phase 1)
 
-> To be completed by the strategist in `feature/wandering-blue-moon-strategy`.
+> To be completed by the strategist in `feature/travel-lava-strategy`.
 > Creative direction (CHANNEL.md) is finalized only after this is accepted.
 
 ## Positioning

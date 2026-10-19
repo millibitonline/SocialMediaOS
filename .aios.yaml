@@ -15,6 +15,8 @@ governance:
     integration: ["@millibitonline"]
 
 # Concrete bindings of agents to Foundation roles (aios/agents/registry.yaml).
+# Roles are configurable: to move a role to another agent/model, change the `id`
+# (and `instructions`) of its entry here in a PR. Nothing else refers to models.
 contributors:
   - id: chatgpt
     kind: agent
@@ -59,11 +61,17 @@ content:
     ai_assisted_label: true     # follow each platform's AI/synthetic-content disclosure rules
     sponsored_label: true       # FTC-style disclosure for paid/affiliate content
 
+coordination:
+  mode: manual                  # manual (Phase 1) | automated (Phase 2, requires ADR)
+  operating_model: docs/OPERATING_MODEL.md
+  labels: .github/labels.yml
+
 integrations:
   production_enabled: false     # flipped only via ADR + gate:integration
 
 locks:
   - integrations.production_enabled
+  - coordination.mode
   - content.require_gate_for
   - content.disclosure.ai_assisted_label
   - content.disclosure.sponsored_label

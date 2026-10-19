@@ -15,7 +15,8 @@ the top of every inheritance chain.
 | [`governance/INHERITANCE.md`](governance/INHERITANCE.md) | How rules flow down; extend vs. override |
 | [`governance/APPROVALS.md`](governance/APPROVALS.md) | What counts as a human approval |
 | [`agents/AGENT_STANDARDS.md`](agents/AGENT_STANDARDS.md) | Conduct, discovery, and hand-off rules for agents |
-| [`agents/registry.yaml`](agents/registry.yaml) | Vendor-neutral role definitions |
+| [`agents/registry.yaml`](agents/registry.yaml) | Vendor-neutral role definitions and decision ownership |
+| [`agents/HANDOFF_PROTOCOL.md`](agents/HANDOFF_PROTOCOL.md) | Required hand-off fields, statuses, no-silent-override rules |
 | [`schema/aios-config.md`](schema/aios-config.md) | `.aios.yaml` reference |
 | [`templates/`](templates/) | ADR and Feature templates |
 

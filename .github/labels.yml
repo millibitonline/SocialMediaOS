@@ -1,0 +1,19 @@
+# Label set used by the hand-off protocol (aios/agents/HANDOFF_PROTOCOL.md).
+# Not yet applied to the repository — the owner creates these (or approves an
+# engineer automation to sync them) after this PR merges.
+- { name: handoff,                 color: "5319e7", description: "Agent hand-off issue" }
+- { name: "role:strategist",       color: "1d76db", description: "Assigned to the strategist role" }
+- { name: "role:creative-director",color: "d93f0b", description: "Assigned to the creative-director role" }
+- { name: "role:engineer",         color: "0e8a16", description: "Assigned to the engineer role" }
+- { name: "role:human-owner",      color: "000000", description: "Needs the human owner" }
+- { name: "status:ready",          color: "c2e0c6", description: "Complete and waiting for the assignee" }
+- { name: "status:in-progress",    color: "fbca04", description: "Claimed by the assignee" }
+- { name: "status:blocked",        color: "b60205", description: "Waiting on information or a decision" }
+- { name: "status:in-review",      color: "0052cc", description: "PR open" }
+- { name: "status:done",           color: "ededed", description: "Merged / closed" }
+- { name: "needs:approval",        color: "e99695", description: "Requires a human approval" }
+- { name: "needs:decision",        color: "f9d0c4", description: "Proposes changing another role's decision" }
+- { name: "gate:architecture",     color: "b60205", description: "Architecture approval gate" }
+- { name: "gate:publish",          color: "b60205", description: "Publishing approval gate" }
+- { name: "gate:spend",            color: "b60205", description: "Spending approval gate" }
+- { name: "gate:integration",      color: "b60205", description: "Integration approval gate" }

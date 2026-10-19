@@ -27,33 +27,42 @@ file; they never relax it.
 
 ## 3. Roles and responsibilities
 
-### ChatGPT — Strategy & Architecture
-**Role:** `strategist`
-- Owns architecture, governance proposals, ADR drafts, roadmaps, milestones.
-- Owns channel strategy: positioning, audience, platforms, goals, monetization (`STRATEGY.md`).
-- Interprets analytics and financial reports; recommendations become issues/features.
+Work is assigned to **roles**. Which agent fills each role is configured in the
+root [`.aios.yaml`](.aios.yaml) under `contributors:`, so swapping a model is a
+one-line change there. Role definitions: [aios/agents/registry.yaml](aios/agents/registry.yaml).
+
+### strategist (currently ChatGPT): strategy, business models, research, architecture, evaluation
+- Owns decisions on strategy (`STRATEGY.md`), business model, architecture (ADRs), and roadmap.
+- Researches markets and competitors and evaluates results against goals.
 - Does not write final content, change automation, or edit `CHANNEL.md`.
 
-### Claude — Creative Direction & Content Development
-**Role:** `creative-director` · details in [CLAUDE.md](CLAUDE.md)
-- Owns voice, tone, visual direction, content pillars, series (`CHANNEL.md`).
-- Develops content from idea → draft → in-review in `projects/<channel>/content/`.
-- Maintains editorial calendars and the content-production capability.
-- Does not change governance, `.aios.yaml` inheritance, tooling, or CI.
+### creative-director (currently Claude): creative direction, content, documentation, implementation support
+- Owns decisions on creative direction (`CHANNEL.md`) and content up to `in-review`.
+- Writes documentation for decisions other roles own, without changing those decisions.
+- Provides implementation support (drafting files, configs, scaffolding) when
+  another role asks through a hand-off, within that role's decisions.
+- Details in [CLAUDE.md](CLAUDE.md).
 
-### Antigravity — Engineering & Automation
-**Role:** `engineer`
-- Owns `scripts/`, `.github/`, validation, CI, and capability automation.
-- Designs (but does not connect) integrations; connecting requires an ADR and `gate:integration`.
-- Maintains analytics/finance data formats and pipelines.
+### engineer (currently Antigravity): engineering, automation, integrations, testing
+- Owns decisions on tooling, automation, and integration design.
+- Builds and tests scripts, CI, pipelines, and integrations. Connecting production
+  requires an ADR and `gate:integration`.
 - Does not write content or change strategy.
 
-### Human owner
-- Approves architecture, publishing, spend, and integrations. Merges PRs. Resolves escalations.
+### human-owner
+- Approves architecture, publishing, spend, and integrations. Merges PRs. Settles
+  disputes between roles. Resolves escalations.
 
-## 4. Hand-offs
-Use the **Agent hand-off** issue template, or a PR comment, naming the receiving
-role, inputs, expected output and location, and acceptance criteria.
+## 4. Coordination through GitHub
+- **Find work:** open issues labeled `role:<your-role>` + `status:ready`, review
+  requests on PRs, and `needs:decision` issues about decisions you own.
+- **Hand off:** file an **Agent hand-off** issue with every required field (objective,
+  context & references, deliverables, acceptance criteria, assigned role, status,
+  decisions requiring approval). See [aios/agents/HANDOFF_PROTOCOL.md](aios/agents/HANDOFF_PROTOCOL.md).
+- **Claim:** comment "Claiming — <agent id>" and set `status:in-progress`.
+- **Deliver:** open a PR with `Closes #<issue>` and request review from the sending role.
+- **Disagree:** never edit another role's decision. File a **Decision change request**.
+- Full walkthrough with a worked example: [docs/OPERATING_MODEL.md](docs/OPERATING_MODEL.md).
 
 ## 5. When to stop and escalate
 Rules conflict · approval is missing or ambiguous · an action is irreversible ·

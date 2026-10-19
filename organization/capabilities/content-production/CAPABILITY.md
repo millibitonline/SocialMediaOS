@@ -13,7 +13,7 @@ One Markdown file per piece, named `YYYY-MM-DD-<slug>.md`, with front matter:
 ```yaml
 ---
 id: 2026-10-25-first-light
-channel: wandering-blue-moon
+channel: travel-lava
 stage: draft                # idea | draft | in-review | approved | published
 format: short-video         # short-video | carousel | single-image | long-video | text | story
 platforms: [instagram, tiktok]

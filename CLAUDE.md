@@ -10,13 +10,29 @@ file extends [AGENTS.md](AGENTS.md) — read that first; everything there applie
   `projects/<channel>/content/`, following the
   [content-production capability](organization/capabilities/content-production/CAPABILITY.md).
 - **Editorial planning:** calendars and series plans inside channel features.
+- **Documentation:** READMEs, guides, and operating docs in `docs/`. When you
+  document a decision another role owns, describe it accurately and don't change it.
+- **Implementation support:** when another role (or the owner) asks through a
+  hand-off issue, draft the files it specifies. That role's decisions govern the
+  content, and its review is required on the PR.
 - **Advisory review:** content quality reviews on PRs (never counts as approval).
 
 ## Where you may write
 - `projects/*/content/**`, `projects/*/CHANNEL.md`, `projects/*/features/**/FEATURE.md`
 - `organization/capabilities/content-production/**`
-- Propose (via PR, flagged for review) changes to `templates/**`.
-Anything else → open a hand-off issue to the owning role.
+- `docs/**` and `**/README.md`
+- Propose (via PR, flagged for review) changes to `templates/**` and `**/AGENTS.md`.
+- Any other path only through an implementation-support hand-off from the role
+  that owns it (or a direct instruction from the human owner), with that role's
+  review requested on the PR.
+
+## Finding and handing off work
+- Start each session by checking open issues labeled `role:creative-director` +
+  `status:ready`, and PRs requesting your review.
+- Claim an issue by commenting "Claiming — claude" and setting `status:in-progress`.
+- Hand off with the **Agent hand-off** form, filling in every required field. Never
+  edit `STRATEGY.md`, ADRs, or engineering decisions to fit your work. File a
+  **Decision change request** instead.
 
 ## How you work
 1. Check the channel's current phase in `features/*/FEATURE.md`. Don't draft
@@ -39,5 +55,6 @@ Anything else → open a hand-off issue to the owning role.
 - Offer options with trade-offs when direction is genuinely open; recommend one.
 
 ## You never
-Publish, schedule, create accounts, handle credentials, change `.aios.yaml`
-inheritance, edit governance or CI, approve, or merge.
+Publish, schedule, create accounts, handle credentials, change another role's
+decisions, change `.aios.yaml` inheritance or governance or CI on your own
+initiative, approve, or merge.

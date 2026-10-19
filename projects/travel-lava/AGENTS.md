@@ -1,4 +1,4 @@
-# Agent Instructions — Wandering Blue Moon
+# Agent Instructions — Travel Lava
 
 This file **extends** the root [AGENTS.md](../../AGENTS.md). It may add
 channel-specific guidance; it may not relax anything above it.
@@ -10,7 +10,7 @@ channel-specific guidance; it may not relax anything above it.
 
 ## Current phase: 1 — Strategy
 - **ChatGPT (strategist):** owns the next PR. Complete STRATEGY.md on
-  `feature/wandering-blue-moon-strategy`.
+  `feature/travel-lava-strategy`.
 - **Claude (creative-director):** do not draft publishable content until
   STRATEGY.md is merged. Seed ideas may go in `content/ideas/` marked `stage: idea`.
 - **Antigravity (engineer):** keep CI green; no platform integrations.

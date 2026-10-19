@@ -215,7 +215,43 @@ class Validator:
                     if cap not in provided:
                         self.err(rel, f"uses unknown capability '{cap}'")
 
+        self.check_contributors(org_rel)
+        self.check_handoff_form()
         print(f"Checked {len(files)} .aios.yaml file(s).")
+
+    def check_contributors(self, org_rel):
+        """Every contributor must be bound to a role defined in the registry."""
+        if not (self.root / org_rel).is_file():
+            return
+        foundation = self.doc(FOUNDATION)
+        registry_rel = (foundation.get("agents") or {}).get("registry")
+        if not registry_rel or not (self.root / registry_rel).is_file():
+            self.err(FOUNDATION, "agents.registry missing or not found")
+            return
+        roles = set((load(self.root, registry_rel).get("roles") or {}).keys())
+        for c in self.doc(org_rel).get("contributors") or []:
+            if c.get("role") not in roles:
+                self.err(org_rel, f"contributor '{c.get('id')}' bound to unknown role '{c.get('role')}'")
+
+    def check_handoff_form(self):
+        """The hand-off issue form must require every Foundation hand-off field."""
+        required = (self.doc(FOUNDATION).get("coordination") or {}).get("handoff_required_fields") or []
+        if not required:
+            return
+        form_rel = ".github/ISSUE_TEMPLATE/handoff.yml"
+        if not (self.root / form_rel).is_file():
+            self.err(form_rel, "hand-off issue form missing")
+            return
+        body = load(self.root, form_rel).get("body") or []
+        fields = {
+            b.get("id"): (b.get("validations") or {}).get("required", False)
+            for b in body if isinstance(b, dict) and b.get("id")
+        }
+        for f in required:
+            if f not in fields:
+                self.err(form_rel, f"missing required hand-off field '{f}'")
+            elif not fields[f]:
+                self.err(form_rel, f"hand-off field '{f}' must be marked required")
 
 
 def main():

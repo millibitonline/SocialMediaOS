@@ -1,6 +1,13 @@
 ## What changed
 <!-- One or two sentences. -->
 
+Closes #<!-- hand-off issue number -->
+
+## Decisions
+- Decisions this PR makes (and the role that owns them):
+- Changes to another role's decision? <!-- If yes, link the Decision change request and request that role's review. -->
+- Decisions requiring approval:
+
 ## Layer(s) touched
 - [ ] Foundation (`aios/`) — requires owner approval + accepted ADR
 - [ ] Organization (root, `organization/`) — requires owner approval
