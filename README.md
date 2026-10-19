@@ -43,10 +43,10 @@ override* and fails CI. Full rules: [aios/governance/INHERITANCE.md](aios/govern
 
 | Role | Currently bound to | Owns |
 |------|--------------------|------|
-| strategist | ChatGPT | Strategy, business models, research, architecture, evaluation |
-| creative-director | Claude | Creative direction, content development, documentation, implementation support |
-| engineer | Antigravity | Engineering, automation, integrations, testing |
-| human-owner | @millibitonline | Approvals (architecture, publish, spend, integrations), merges, disputes |
+| strategist | ChatGPT | Business strategy, research & competitive analysis, channel selection, monetization, architecture & evaluation |
+| creative-director | Claude | Brand & creative direction, content strategy & development, documentation, implementation support |
+| engineer | Antigravity | Automation, integrations, production pipelines, testing & deployment |
+| human-owner | @millibitonline | Final decisions, approvals, resource allocation, merge authorization |
 
 Roles are configurable: bindings live only in `.aios.yaml` → `contributors:`.
 Agents propose via branches and PRs. Only humans approve gates and merge.
@@ -92,7 +92,10 @@ organization/
   teams/channels/               Channels team + launch playbook
 templates/channel/              Copy to start a new channel
 projects/travel-lava/   First channel (planning)
-docs/OPERATING_MODEL.md         How agents discover work, hand off, and review
+docs/OPERATING_MODEL.md         How agents discover work, hand off, review, and trace work
+docs/AGENT_ACCESS.md            Current per-agent repository access + proxy-commit rules
+docs/REPOSITORY_SETTINGS.md     Recommended branch protection for main
+docs/handoffs/drafts/           Hand-off issues prepared before they can be filed
 docs/adr/                       Architecture decision records
 scripts/validate_aios.py        Inheritance validator (runs in CI)
 .github/                        CI, PR template, CODEOWNERS, issue templates

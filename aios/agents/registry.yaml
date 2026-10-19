@@ -3,20 +3,24 @@
 # Roles describe WORK, not models. Organizations bind any agent or human to a
 # role in their .aios.yaml under `contributors:` — swapping the model behind a
 # role is a one-line change there and never requires editing this file.
-# Organizations may add roles; they may not loosen these.
+# Organizations may add roles and extend these (e.g. forge-specific paths such
+# as CI config) under `role_extensions:` in their .aios.yaml; they may not
+# loosen them.
 
 roles:
   strategist:
     description: Owns strategy, business models, research, architecture, and evaluation.
     responsibilities:
-      - strategy, positioning, audience, and platform choice
+      - business strategy, positioning, audience, and platform choice
+      - channel selection (which channels/projects to launch)
       - business models and monetization
-      - market and competitive research
+      - market research and competitive analysis
       - architecture and hierarchy design; ADR drafting
       - evaluation of results against goals; roadmaps and milestones
       - advisory review of structural PRs
     owns_decisions:
       - strategy           # STRATEGY.md
+      - channel-selection
       - business-model
       - architecture       # ADRs (owner approves)
       - roadmap
@@ -36,7 +40,8 @@ roles:
   creative-director:
     description: Owns creative direction, content development, documentation, and implementation support.
     responsibilities:
-      - brand voice, tone, and visual direction
+      - brand and creative direction: voice, tone, and visual identity
+      - content strategy within the channel strategy (pillars, series, formats)
       - content ideation, scripting, captions, and copy
       - editorial calendars and series planning
       - documentation (READMEs, guides, operating docs) for decisions others own
@@ -59,34 +64,35 @@ roles:
     gates_may_request: [publish]
 
   engineer:
-    description: Owns engineering, automation, integrations, and testing.
+    description: Owns engineering, automation, integrations, production pipelines, testing, and deployment.
     responsibilities:
       - repository tooling, validation, and CI
-      - automation pipelines (draft → review → schedule)
+      - automation and production pipelines (draft → review → schedule)
       - integration design and build (connecting production requires gate:integration)
-      - tests for tooling, automation, and integrations
+      - testing of tooling, automation, and integrations
+      - deployment of tooling and pipelines (production deployment requires gate:integration)
       - analytics and reporting data pipelines
     owns_decisions:
       - tooling
       - automation
+      - production-pipeline
       - integration-design  # owner approves connection
     writes:
       - "scripts/**"
       - "tests/**"
-      - ".github/workflows/**"
       - "organization/capabilities/*/automation/**"
     may_propose_changes_to:
       - "organization/capabilities/**"
       - "**/.aios.yaml"
-      - ".github/**"
     gates_may_request: [integration]
 
   human-owner:
-    description: Accountable human. Holds final approval authority.
+    description: Accountable human. Final decisions, approvals, resources, and merges.
     responsibilities:
+      - final decisions, including resolving decision conflicts between roles
       - approving gated actions (architecture, publish, spend, integration)
-      - resolving decision conflicts between roles
-      - merging PRs
+      - resource allocation (budget, accounts, tools, agent access)
+      - merge authorization
       - resolving escalations
     writes: ["**"]
     gates_may_approve: [architecture, publish, spend, integration]

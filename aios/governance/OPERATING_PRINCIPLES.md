@@ -5,8 +5,9 @@
 These principles apply to every AIOS implementation, every organization, team,
 project, feature, task, and contributor — human or agent.
 
-## 1. GitHub is the source of truth
-- If it is not in the repository, it is not decided.
+## 1. The repository is the source of truth
+- The organization's git repository (on the forge it binds at Organization level)
+  is authoritative. If it is not in the repository, it is not decided.
 - Chat transcripts, docs in other tools, and agent memory are *inputs*; they become
   binding only when committed and merged.
 - Every merged change has an author, a reviewer, and a reason (the PR description).

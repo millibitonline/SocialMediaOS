@@ -31,27 +31,31 @@ Work is assigned to **roles**. Which agent fills each role is configured in the
 root [`.aios.yaml`](.aios.yaml) under `contributors:`, so swapping a model is a
 one-line change there. Role definitions: [aios/agents/registry.yaml](aios/agents/registry.yaml).
 
-### strategist (currently ChatGPT): strategy, business models, research, architecture, evaluation
-- Owns decisions on strategy (`STRATEGY.md`), business model, architecture (ADRs), and roadmap.
-- Researches markets and competitors and evaluates results against goals.
+### strategist (currently ChatGPT): business strategy, research, channel selection, monetization, architecture & evaluation
+- Owns decisions on strategy (`STRATEGY.md`), channel selection, business model, architecture (ADRs), and roadmap.
+- Does research and competitive analysis, and evaluates results against goals.
+- Currently has **read-only** repository access: deliver work as issue comments
+  for Claude to commit with attribution ([docs/AGENT_ACCESS.md](docs/AGENT_ACCESS.md)).
 - Does not write final content, change automation, or edit `CHANNEL.md`.
 
-### creative-director (currently Claude): creative direction, content, documentation, implementation support
-- Owns decisions on creative direction (`CHANNEL.md`) and content up to `in-review`.
+### creative-director (currently Claude): brand & creative direction, content strategy & development, documentation, implementation support
+- Owns decisions on brand and creative direction (`CHANNEL.md`), content strategy
+  within the channel strategy, and content up to `in-review`.
 - Writes documentation for decisions other roles own, without changing those decisions.
 - Provides implementation support (drafting files, configs, scaffolding) when
   another role asks through a hand-off, within that role's decisions.
 - Details in [CLAUDE.md](CLAUDE.md).
 
-### engineer (currently Antigravity): engineering, automation, integrations, testing
-- Owns decisions on tooling, automation, and integration design.
-- Builds and tests scripts, CI, pipelines, and integrations. Connecting production
-  requires an ADR and `gate:integration`.
+### engineer (currently Antigravity): automation, integrations, production pipelines, testing & deployment
+- Owns decisions on tooling, automation, production pipelines, and integration design.
+- Builds, tests, and deploys scripts, CI, pipelines, and integrations. Connecting or
+  deploying to production requires an ADR and `gate:integration`.
+- Not connected yet.
 - Does not write content or change strategy.
 
 ### human-owner
-- Approves architecture, publishing, spend, and integrations. Merges PRs. Settles
-  disputes between roles. Resolves escalations.
+- Final decisions (including disputes between roles), approvals for architecture,
+  publishing, spend, and integrations, resource allocation, and merge authorization.
 
 ## 4. Coordination through GitHub
 - **Find work:** open issues labeled `role:<your-role>` + `status:ready`, review
@@ -62,6 +66,7 @@ one-line change there. Role definitions: [aios/agents/registry.yaml](aios/agents
 - **Claim:** comment "Claiming — <agent id>" and set `status:in-progress`.
 - **Deliver:** open a PR with `Closes #<issue>` and request review from the sending role.
 - **Disagree:** never edit another role's decision. File a **Decision change request**.
+- **Trace:** commits end with `Refs: #<issue>`. Proxy commits add `Proposed-by:` / `Committed-by:`.
 - Full walkthrough with a worked example: [docs/OPERATING_MODEL.md](docs/OPERATING_MODEL.md).
 
 ## 5. When to stop and escalate

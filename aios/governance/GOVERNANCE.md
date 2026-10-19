@@ -5,8 +5,8 @@
 ## Purpose
 AIOS is a reusable, platform-independent operating model for organizations whose
 work is done by a mix of humans and AI agents. This document defines how
-decisions are made, recorded, and changed. Implementations (such as
-SocialMediaOS) inherit it unchanged and may extend it.
+decisions are made, recorded, and changed. Implementations inherit it unchanged
+and may extend it.
 
 ## Roles
 

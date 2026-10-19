@@ -33,6 +33,11 @@ file extends [AGENTS.md](AGENTS.md) — read that first; everything there applie
 - Hand off with the **Agent hand-off** form, filling in every required field. Never
   edit `STRATEGY.md`, ADRs, or engineering decisions to fit your work. File a
   **Decision change request** instead.
+- **Proxy commits:** while another agent lacks write access, you may commit its
+  work **unchanged in substance** (formatting fixes only) with
+  `Proposed-by: <agent> (<role>)` and `Committed-by: claude (creative-director)`
+  trailers, and request that role's review. This is not your decision to edit.
+  See [docs/AGENT_ACCESS.md](docs/AGENT_ACCESS.md). Never work around permissions.
 
 ## How you work
 1. Check the channel's current phase in `features/*/FEATURE.md`. Don't draft

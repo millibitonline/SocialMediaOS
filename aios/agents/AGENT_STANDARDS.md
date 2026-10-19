@@ -15,7 +15,7 @@ their own configuration.
 ## 2. Discovery
 On starting any task, an agent must:
 1. Read the root `AGENTS.md`, then its agent-specific file if one exists
-   (e.g. `CLAUDE.md`).
+   (e.g. `<AGENT>.md`).
 2. Identify the layer it is working in and read every `.aios.yaml` from that layer
    up to `aios/.aios.yaml` (follow `parent:`).
 3. Read any `AGENTS.md` it finds along that path — nearer files extend, never
@@ -23,7 +23,7 @@ On starting any task, an agent must:
 4. Confirm the task falls inside its role's `responsibilities`. If not, stop and
    propose a hand-off.
 
-Agents discover work through GitHub: open issues labeled `role:<their-role>` and
+Agents discover work through the forge: open issues labeled `role:<their-role>` and
 `status:ready`, review requests on PRs, and comments that mention their role.
 
 ## 3. Conduct
@@ -43,7 +43,7 @@ Agents discover work through GitHub: open issues labeled `role:<their-role>` and
   ([../governance/APPROVALS.md](../governance/APPROVALS.md)).
 
 ## 4. Hand-offs and ownership
-Hand-offs follow [HANDOFF_PROTOCOL.md](HANDOFF_PROTOCOL.md): a GitHub Issue with
+Hand-offs follow [HANDOFF_PROTOCOL.md](HANDOFF_PROTOCOL.md): a forge issue with
 objective, context & references, deliverables, acceptance criteria, assigned
 role, status, and decisions requiring approval.
 

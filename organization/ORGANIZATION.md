@@ -23,10 +23,10 @@ can be reassigned without touching anything else.
 
 | AIOS role | Currently bound to | Owns | Never does |
 |-----------|--------------------|------|------------|
-| strategist | **ChatGPT** | Strategy, business models, research, architecture, evaluation | Write final content, change automation, merge |
-| creative-director | **Claude** | Creative direction, content development, documentation, implementation support | Change other roles' decisions, publish, merge |
-| engineer | **Antigravity** | Engineering, automation, integrations, testing | Connect production systems without `gate:integration`, publish, merge |
-| human-owner | **@millibitonline** | Approvals for architecture, publishing, spend, integrations; merges; disputes | — |
+| strategist | **ChatGPT** | Business strategy, research & competitive analysis, channel selection, monetization, architecture & evaluation | Write final content, change automation, merge |
+| creative-director | **Claude** | Brand & creative direction, content strategy & development, documentation, implementation support | Change other roles' decisions, publish, merge |
+| engineer | **Antigravity** | Automation, integrations, production pipelines, testing & deployment | Connect production systems without `gate:integration`, publish, merge |
+| human-owner | **@millibitonline** | Final decisions, approvals, resource allocation, merge authorization | — |
 
 Agents coordinate through GitHub issues (hand-offs), pull requests (proposed
 changes), and Markdown/ADRs (decisions). See

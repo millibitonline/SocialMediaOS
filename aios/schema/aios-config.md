@@ -28,7 +28,7 @@ organization → foundation).
 
 | Key            | Used by | Meaning |
 |----------------|---------|---------|
-| `owners`       | any     | GitHub handles accountable for the layer |
+| `owners`       | any     | Forge handles (e.g. `@user`) accountable for the layer |
 | `contributors` | organization | Binds concrete agents/humans to registry roles |
 | `capabilities` | organization (`provides`), project (`uses`) | Shared services |
 | `content`      | organization, project | Cadence, review, and pipeline settings |

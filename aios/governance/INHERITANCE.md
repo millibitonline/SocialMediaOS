@@ -25,7 +25,7 @@ and must terminate at the Foundation (`aios/.aios.yaml`).
 | Team         | `organization/teams/<team>/`                      | `.aios.yaml`         |
 | Project      | `projects/<project>/`                             | `.aios.yaml`         |
 | Feature      | `projects/<project>/features/<feature>/`          | `.aios.yaml`         |
-| Task         | tracked in `FEATURE.md` / GitHub Issues           | (no file required)   |
+| Task         | tracked in `FEATURE.md` / forge issues            | (no file required)   |
 | Contributor  | `aios/agents/registry.yaml` + org `contributors:` | registry entry       |
 
 Shared **capabilities** (`organization/capabilities/<name>/`) are not a hierarchy
@@ -75,7 +75,7 @@ overrides:
     from: 5
     to: 3
     reason: "Long-form channel; quality over volume during launch quarter."
-    approved_by: "@seth"          # GitHub handle of the approving human
+    approved_by: "@owner"         # forge handle of the approving human
     approval_ref: "PR #12"        # where the approval was recorded
 ```
 

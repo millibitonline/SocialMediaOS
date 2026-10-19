@@ -29,10 +29,10 @@ the root [`.aios.yaml`](../.aios.yaml) under `contributors:`:
 
 | Role | Currently bound to | Owns |
 |------|--------------------|------|
-| strategist | ChatGPT | Strategy, business models, research, architecture, evaluation |
-| creative-director | Claude | Creative direction, content development, documentation, implementation support |
-| engineer | Antigravity | Engineering, automation, integrations, testing |
-| human-owner | @millibitonline | Approvals, merges, conflict resolution |
+| strategist | ChatGPT | Business strategy, research & competitive analysis, channel selection, monetization, architecture & evaluation |
+| creative-director | Claude | Brand & creative direction, content strategy & development, documentation, implementation support |
+| engineer | Antigravity | Automation, integrations, production pipelines, testing & deployment |
+| human-owner | @millibitonline | Final decisions, approvals, resource allocation, merge authorization |
 
 To move a role to a different agent, change its `contributors:` entry in a PR.
 Labels, issue forms, and docs all refer to roles, so nothing else changes.
@@ -71,6 +71,19 @@ issue or PR. In **Phase 2** agents poll or receive these through automation.
 ### 5. Disagree without overriding
 - Don't edit a decision another role owns. File a **Decision change request**
   issue to that role. The owning role decides, and the human owner settles disputes.
+
+### 6. Keep everything traceable
+Every piece of work should link issue → commit → PR → decision:
+- **Branch:** `<type>/<project>-<topic>`, matching the hand-off issue.
+- **Commits:** end with `Refs: #<issue>`. Agent-made commits name the agent; proxy
+  commits add `Proposed-by: <agent> (<role>)` and `Committed-by: <agent>`
+  ([AGENT_ACCESS.md](AGENT_ACCESS.md)).
+- **PRs:** `Closes #<issue>` plus the template's *Decisions* section; link any ADR the PR
+  implements or proposes.
+- **Decisions:** recorded in the owning file (STRATEGY.md, CHANNEL.md, an ADR) and cited by
+  path in later issues and PRs instead of being restated.
+- **Approvals:** an approving PR review on the exact head commit, or an approval-log
+  entry with the commit SHA (`aios/governance/APPROVALS.md`).
 
 ## Worked example: launching travel-lava
 

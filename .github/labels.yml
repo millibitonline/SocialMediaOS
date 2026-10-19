@@ -1,6 +1,6 @@
 # Label set used by the hand-off protocol (aios/agents/HANDOFF_PROTOCOL.md).
-# Not yet applied to the repository — the owner creates these (or approves an
-# engineer automation to sync them) after this PR merges.
+# Applied to the repository on 2026-10-19. Keep this file and the repo's labels in
+# sync; Phase 2 automation (engineer) may sync them automatically.
 - { name: handoff,                 color: "5319e7", description: "Agent hand-off issue" }
 - { name: "role:strategist",       color: "1d76db", description: "Assigned to the strategist role" }
 - { name: "role:creative-director",color: "d93f0b", description: "Assigned to the creative-director role" }

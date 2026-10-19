@@ -17,19 +17,25 @@ governance:
 # Concrete bindings of agents to Foundation roles (aios/agents/registry.yaml).
 # Roles are configurable: to move a role to another agent/model, change the `id`
 # (and `instructions`) of its entry here in a PR. Nothing else refers to models.
+# `repo_access` records each agent's CURRENT integration status, not its role's
+# permissions. See docs/AGENT_ACCESS.md.
 contributors:
   - id: chatgpt
     kind: agent
     role: strategist
-    instructions: AGENTS.md#chatgpt--strategy--architecture
+    instructions: AGENTS.md
+    repo_access: read          # write attempt returned 403 (integration limitation)
+    commits_via: claude        # until write access works; attribution preserved
   - id: claude
     kind: agent
     role: creative-director
     instructions: CLAUDE.md
+    repo_access: write
   - id: antigravity
     kind: agent
     role: engineer
-    instructions: AGENTS.md#antigravity--engineering--automation
+    instructions: AGENTS.md
+    repo_access: not-connected
   - id: owner
     kind: human
     role: human-owner
@@ -62,9 +68,31 @@ content:
     sponsored_label: true       # FTC-style disclosure for paid/affiliate content
 
 coordination:
+  platform: github              # the forge this implementation binds (Foundation is forge-neutral)
   mode: manual                  # manual (Phase 1) | automated (Phase 2, requires ADR)
   operating_model: docs/OPERATING_MODEL.md
   labels: .github/labels.yml
+
+# Organization extensions to Foundation roles (append-only; never loosen).
+role_extensions:
+  engineer:
+    writes: [".github/workflows/**"]
+    may_propose_changes_to: [".github/**"]
+
+# Implementation-specific names that must never appear in the Foundation (aios/).
+# Enforced by scripts/validate_aios.py (Operating Principle 7).
+foundation_forbidden_terms:
+  - github
+  - socialmediaos
+  - travel-lava
+  - instagram
+  - tiktok
+  - youtube
+  - chatgpt
+  - openai
+  - claude
+  - anthropic
+  - antigravity
 
 integrations:
   production_enabled: false     # flipped only via ADR + gate:integration
@@ -72,6 +100,7 @@ integrations:
 locks:
   - integrations.production_enabled
   - coordination.mode
+  - coordination.platform
   - content.require_gate_for
   - content.disclosure.ai_assisted_label
   - content.disclosure.sponsored_label

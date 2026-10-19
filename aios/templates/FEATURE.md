@@ -17,7 +17,7 @@ One or two sentences: what outcome this feature delivers.
 - [ ] ...
 
 ## Tasks
-Tasks are the leaf work items. Track them here or as linked GitHub Issues.
+Tasks are the leaf work items. Track them here or as linked forge issues.
 
 | # | Task | Role | Status | Link |
 |---|------|------|--------|------|

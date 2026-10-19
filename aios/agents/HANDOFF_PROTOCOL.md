@@ -3,7 +3,8 @@
 **Layer:** Foundation · **Status:** Locked (changes require a Foundation ADR)
 
 A **hand-off** transfers a unit of work from one contributor to another. In AIOS
-every hand-off is a **GitHub Issue** created from the *Agent hand-off* form, so
+every hand-off is an **issue** in the organization's git forge, created from the
+*Agent hand-off* form, so
 that it is visible, versioned, and reviewable. Nothing is handed off in chat.
 
 ## 1. Required fields

@@ -25,7 +25,7 @@ agents:
   standards: aios/agents/AGENT_STANDARDS.md
   discovery:
     root_instructions: AGENTS.md
-    agent_specific_instructions: true   # e.g. CLAUDE.md alongside AGENTS.md
+    agent_specific_instructions: true   # e.g. <AGENT>.md alongside AGENTS.md
     walk_parents: true
   handoff_protocol: aios/agents/HANDOFF_PROTOCOL.md
   constraints:
@@ -34,11 +34,12 @@ agents:
     must_label_generated_content: true
     may_change_other_roles_decisions: false
 
-# How contributors coordinate. GitHub is both the source of truth and the
-# communication layer: issues = tasks/hand-offs, PRs = proposed changes,
-# Markdown = decisions and strategy, ADRs = significant decisions.
+# How contributors coordinate. The repository's git forge is both the source of
+# truth and the communication layer: issues = tasks/hand-offs, pull requests =
+# proposed changes, Markdown = decisions and strategy, ADRs = significant
+# decisions. The concrete forge is bound at Organization level
+# (coordination.platform); the Foundation stays forge-neutral.
 coordination:
-  platform: github
   tasks_and_handoffs: issues
   proposed_changes: pull_requests
   decisions: markdown_and_adr

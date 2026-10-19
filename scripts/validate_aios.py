@@ -216,6 +216,8 @@ class Validator:
                         self.err(rel, f"uses unknown capability '{cap}'")
 
         self.check_contributors(org_rel)
+        self.check_role_extensions(org_rel)
+        self.check_foundation_purity(org_rel)
         self.check_handoff_form()
         print(f"Checked {len(files)} .aios.yaml file(s).")
 
@@ -232,6 +234,39 @@ class Validator:
         for c in self.doc(org_rel).get("contributors") or []:
             if c.get("role") not in roles:
                 self.err(org_rel, f"contributor '{c.get('id')}' bound to unknown role '{c.get('role')}'")
+
+    def check_role_extensions(self, org_rel):
+        """Organization role extensions may only append to roles that exist."""
+        if not (self.root / org_rel).is_file():
+            return
+        registry_rel = (self.doc(FOUNDATION).get("agents") or {}).get("registry")
+        if not registry_rel or not (self.root / registry_rel).is_file():
+            return
+        roles = set((load(self.root, registry_rel).get("roles") or {}).keys())
+        for role, ext in (self.doc(org_rel).get("role_extensions") or {}).items():
+            if role not in roles:
+                self.err(org_rel, f"role_extensions names unknown role '{role}'")
+                continue
+            for key, value in (ext or {}).items():
+                if not isinstance(value, list):
+                    self.err(org_rel, f"role_extensions.{role}.{key} must be a list (append-only)")
+
+    def check_foundation_purity(self, org_rel):
+        """Operating Principle 7: no implementation-specific names in aios/."""
+        if not (self.root / org_rel).is_file():
+            return
+        terms = [t.lower() for t in self.doc(org_rel).get("foundation_forbidden_terms") or []]
+        if not terms:
+            return
+        for path in sorted((self.root / "aios").rglob("*")):
+            if not path.is_file():
+                continue
+            rel = path.relative_to(self.root).as_posix()
+            for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+                low = line.lower()
+                for term in terms:
+                    if term in low:
+                        self.err(rel, f"line {lineno}: Foundation must not reference '{term}'")
 
     def check_handoff_form(self):
         """The hand-off issue form must require every Foundation hand-off field."""
