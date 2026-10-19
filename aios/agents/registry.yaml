@@ -1,0 +1,71 @@
+# AIOS role registry (Foundation, vendor-neutral).
+# Organizations bind concrete agents/humans to these roles in their .aios.yaml
+# under `contributors:`. Organizations may add roles; they may not loosen these.
+
+roles:
+  strategist:
+    description: Owns strategy, architecture, roadmap, and cross-project decisions.
+    responsibilities:
+      - architecture and hierarchy design
+      - governance proposals and ADR drafting
+      - roadmaps, priorities, and milestone definitions
+      - channel strategy, positioning, and audience definition
+      - review of structural PRs (advisory)
+    writes:
+      - "docs/**"
+      - "**/README.md"
+      - "**/ROADMAP.md"
+      - "**/STRATEGY.md"
+    may_propose_changes_to:
+      - "aios/**"
+      - "organization/**"
+      - "**/.aios.yaml"
+    gates_may_request: [architecture]
+
+  creative-director:
+    description: Owns creative direction, voice, and content development.
+    responsibilities:
+      - brand voice, tone, and visual direction briefs
+      - content ideation, scripting, captions, and copy
+      - editorial calendars and series planning
+      - content quality review (advisory)
+    writes:
+      - "projects/*/content/**"
+      - "projects/*/CHANNEL.md"
+      - "projects/*/features/**/FEATURE.md"
+      - "organization/capabilities/content-production/**"
+    may_propose_changes_to:
+      - "templates/**"
+    gates_may_request: [publish]
+
+  engineer:
+    description: Owns engineering, automation, tooling, and integrations.
+    responsibilities:
+      - repository tooling, validation, and CI
+      - automation pipelines (draft → review → schedule)
+      - integration design (production connections require gate:integration)
+      - analytics and reporting data pipelines
+    writes:
+      - "scripts/**"
+      - ".github/**"
+      - "organization/capabilities/*/automation/**"
+    may_propose_changes_to:
+      - "organization/capabilities/**"
+      - "**/.aios.yaml"
+    gates_may_request: [integration]
+
+  human-owner:
+    description: Accountable human. Holds final approval authority.
+    responsibilities:
+      - approving gated actions (architecture, publish, spend, integration)
+      - merging PRs
+      - resolving escalations
+    writes: ["**"]
+    gates_may_approve: [architecture, publish, spend, integration]
+
+# Rules that apply to every non-human role (cannot be loosened downstream).
+agent_constraints:
+  can_merge: false
+  can_approve_gates: false
+  can_push_to_main: false
+  must_label_generated_content: true

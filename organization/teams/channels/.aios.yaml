@@ -1,0 +1,14 @@
+layer: team
+id: channels
+name: Channels Team
+parent: .aios.yaml
+description: Owns the portfolio of channel projects and their shared launch playbook.
+owners: ["@millibitonline"]
+
+projects:
+  - projects/wandering-blue-moon/.aios.yaml
+
+launch:
+  template: templates/channel
+  required_documents: [README.md, CHANNEL.md, AGENTS.md, .aios.yaml]
+  launch_checklist: organization/teams/channels/LAUNCH_PLAYBOOK.md

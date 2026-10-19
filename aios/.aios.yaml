@@ -1,0 +1,52 @@
+# AIOS Foundation layer. Platform-independent. Root of every inheritance chain.
+aios_version: "0.1.0"
+layer: foundation
+id: aios
+name: AIOS Foundation
+description: Reusable, platform-independent operating system for human + AI organizations.
+
+hierarchy: [foundation, organization, team, project, feature, task, contributor]
+
+governance:
+  source_of_truth: git
+  change_process: pull_request
+  protected_branches: [main]
+  branch_prefixes: [setup, feature, content, fix, governance, docs, chore]
+  adr_directory: docs/adr
+  human_approval:
+    architecture: required
+    publishing: required
+    spending: required
+    integrations: required
+  min_human_approvals: 1
+
+agents:
+  registry: aios/agents/registry.yaml
+  standards: aios/agents/AGENT_STANDARDS.md
+  discovery:
+    root_instructions: AGENTS.md
+    agent_specific_instructions: true   # e.g. CLAUDE.md alongside AGENTS.md
+    walk_parents: true
+  constraints:
+    can_merge: false
+    can_approve_gates: false
+    must_label_generated_content: true
+
+documents:
+  - aios/governance/OPERATING_PRINCIPLES.md
+  - aios/governance/GOVERNANCE.md
+  - aios/governance/INHERITANCE.md
+  - aios/governance/APPROVALS.md
+
+# Keys no descendant may change.
+locks:
+  - governance.source_of_truth
+  - governance.change_process
+  - governance.protected_branches
+  - governance.human_approval.architecture
+  - governance.human_approval.publishing
+  - governance.human_approval.spending
+  - governance.human_approval.integrations
+  - agents.constraints.can_merge
+  - agents.constraints.can_approve_gates
+  - agents.constraints.must_label_generated_content

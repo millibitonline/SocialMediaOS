@@ -1,0 +1,10 @@
+id: content-production
+kind: capability
+owner_role: creative-director
+parent: .aios.yaml
+stages: [ideas, drafts, in-review, approved, published]
+file_naming: "YYYY-MM-DD-<slug>.md"
+required_front_matter: [id, channel, stage, format, platforms, ai_assisted, sponsored]
+generated_content_requires: [generated_by]
+locks:
+  - required_front_matter

@@ -1,0 +1,7 @@
+layer: feature
+id: channel-launch
+name: Channel Launch
+parent: projects/wandering-blue-moon/.aios.yaml
+status: active
+owner_role: strategist
+owners: ["@millibitonline"]

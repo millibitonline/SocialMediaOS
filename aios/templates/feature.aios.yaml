@@ -1,0 +1,12 @@
+# Copy to projects/<project>/features/<feature>/.aios.yaml
+layer: feature
+id: <feature-id>
+name: <Feature Name>
+parent: projects/<project>/.aios.yaml
+status: planning
+owner_role: creative-director
+owners: ["@owner-handle"]
+# extends:
+#   - key: some.key
+#     reason: "why this is stricter"
+# overrides: []   # see aios/governance/INHERITANCE.md — requires human approval
