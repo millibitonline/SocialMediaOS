@@ -1,0 +1,9 @@
+id: financial-reporting
+kind: capability
+owner_role: strategist
+parent: .aios.yaml
+currency: USD
+ledger_cadence: monthly
+spend_requires_gate: spend
+locks:
+  - spend_requires_gate

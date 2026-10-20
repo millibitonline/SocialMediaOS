@@ -1,0 +1,14 @@
+channel: <channel-id>
+period: 2026-W43
+source: manual           # manual | api (api requires gate:integration)
+entered_by: "@handle"
+platforms:
+  instagram:
+    followers: 0
+    follower_growth: 0
+    posts_published: 0
+    reach: 0
+    impressions: 0
+    engagement_rate: 0.0
+    link_clicks: 0
+notes: ""

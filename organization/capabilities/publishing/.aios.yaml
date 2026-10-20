@@ -1,0 +1,12 @@
+id: publishing
+kind: capability
+owner_role: engineer
+parent: .aios.yaml
+mode: manual
+requires_gate: publish
+approval_must_match_commit: true
+dry_run_required_before_live: true
+locks:
+  - requires_gate
+  - approval_must_match_commit
+  - dry_run_required_before_live

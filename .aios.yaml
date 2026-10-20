@@ -1,0 +1,109 @@
+# SocialMediaOS — Organization layer (an implementation of AIOS).
+layer: organization
+id: socialmediaos
+name: SocialMediaOS
+parent: aios/.aios.yaml
+description: Operates a portfolio of social media channels on the AIOS model.
+
+owners: ["@millibitonline"]   # TODO(owner): confirm accountable human handle(s)
+
+governance:
+  approvers:
+    architecture: ["@millibitonline"]
+    publish: ["@millibitonline"]
+    spend: ["@millibitonline"]
+    integration: ["@millibitonline"]
+
+# Concrete bindings of agents to Foundation roles (aios/agents/registry.yaml).
+# Roles are configurable: to move a role to another agent/model, change the `id`
+# (and `instructions`) of its entry here in a PR. Nothing else refers to models.
+# `repo_access` records each agent's CURRENT integration status, not its role's
+# permissions. See docs/AGENT_ACCESS.md.
+contributors:
+  - id: chatgpt
+    kind: agent
+    role: strategist
+    instructions: AGENTS.md
+    repo_access: write-via-owner-account   # connector authenticates as @millibitonline (since 2026-10-19)
+    attribution: commit message marker      # see docs/AGENT_ACCESS.md
+  - id: claude
+    kind: agent
+    role: creative-director
+    instructions: CLAUDE.md
+    repo_access: write
+  - id: antigravity
+    kind: agent
+    role: engineer
+    instructions: AGENTS.md
+    repo_access: not-connected
+  - id: owner
+    kind: human
+    role: human-owner
+    handle: "@millibitonline"
+
+teams:
+  - organization/teams/channels/.aios.yaml
+
+capabilities:
+  provides:
+    - id: content-production
+      path: organization/capabilities/content-production
+    - id: publishing
+      path: organization/capabilities/publishing
+    - id: analytics
+      path: organization/capabilities/analytics
+    - id: financial-reporting
+      path: organization/capabilities/financial-reporting
+
+content:
+  pipeline: [idea, draft, in-review, approved, scheduled, published]
+  require_gate_for: [scheduled, published]
+  generated_label: "generated_by"
+  cadence:
+    posts_per_week: 3
+  review:
+    min_human_reviews: 1
+  disclosure:
+    ai_assisted_label: true     # follow each platform's AI/synthetic-content disclosure rules
+    sponsored_label: true       # FTC-style disclosure for paid/affiliate content
+
+coordination:
+  platform: github              # the forge this implementation binds (Foundation is forge-neutral)
+  mode: manual                  # manual (Phase 1) | automated (Phase 2, requires ADR)
+  operating_model: docs/OPERATING_MODEL.md
+  labels: .github/labels.yml
+
+# Organization extensions to Foundation roles (append-only; never loosen).
+role_extensions:
+  engineer:
+    writes: [".github/workflows/**"]
+    may_propose_changes_to: [".github/**"]
+
+# Implementation-specific names that must never appear in the Foundation (aios/).
+# Enforced by scripts/validate_aios.py (Operating Principle 7).
+foundation_forbidden_terms:
+  - github
+  - socialmediaos
+  - travel-lava
+  - instagram
+  - tiktok
+  - youtube
+  - chatgpt
+  - openai
+  - claude
+  - anthropic
+  - antigravity
+
+integrations:
+  production_enabled: false     # flipped only via ADR + gate:integration
+
+locks:
+  - integrations.production_enabled
+  - coordination.mode
+  - coordination.platform
+  - content.require_gate_for
+  - content.disclosure.ai_assisted_label
+  - content.disclosure.sponsored_label
+# content.review.min_human_reviews is intentionally NOT locked so projects can
+# raise it via `extends:`. Lowering it below 1 is blocked by the Foundation
+# publishing-approval lock.

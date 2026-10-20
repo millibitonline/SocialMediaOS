@@ -1,0 +1,10 @@
+id: analytics
+kind: capability
+owner_role: engineer
+parent: .aios.yaml
+metrics: [followers, follower_growth, posts_published, reach, impressions, engagement_rate, avg_watch_time, link_clicks]
+snapshot_cadence: weekly
+review_cadence: monthly
+source: manual
+locks:
+  - metrics

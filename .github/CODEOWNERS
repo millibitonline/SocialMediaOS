@@ -1,0 +1,8 @@
+# Human approval is required for every path. Agents never satisfy CODEOWNERS.
+# TODO(owner): confirm handle(s); enable "Require review from Code Owners" on main.
+*                 @millibitonline
+/aios/            @millibitonline
+/.aios.yaml       @millibitonline
+/organization/    @millibitonline
+**/content/approved/   @millibitonline
+**/content/published/  @millibitonline

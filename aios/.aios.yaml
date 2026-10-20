@@ -1,0 +1,76 @@
+# AIOS Foundation layer. Platform-independent. Root of every inheritance chain.
+aios_version: "0.1.0"
+layer: foundation
+id: aios
+name: AIOS Foundation
+description: Reusable, platform-independent operating system for human + AI organizations.
+
+hierarchy: [foundation, organization, team, project, feature, task, contributor]
+
+governance:
+  source_of_truth: git
+  change_process: pull_request
+  protected_branches: [main]
+  branch_prefixes: [setup, feature, content, fix, governance, docs, chore]
+  adr_directory: docs/adr
+  human_approval:
+    architecture: required
+    publishing: required
+    spending: required
+    integrations: required
+  min_human_approvals: 1
+
+agents:
+  registry: aios/agents/registry.yaml
+  standards: aios/agents/AGENT_STANDARDS.md
+  discovery:
+    root_instructions: AGENTS.md
+    agent_specific_instructions: true   # e.g. <AGENT>.md alongside AGENTS.md
+    walk_parents: true
+  handoff_protocol: aios/agents/HANDOFF_PROTOCOL.md
+  constraints:
+    can_merge: false
+    can_approve_gates: false
+    must_label_generated_content: true
+    may_change_other_roles_decisions: false
+
+# How contributors coordinate. The repository's git forge is both the source of
+# truth and the communication layer: issues = tasks/hand-offs, pull requests =
+# proposed changes, Markdown = decisions and strategy, ADRs = significant
+# decisions. The concrete forge is bound at Organization level
+# (coordination.platform); the Foundation stays forge-neutral.
+coordination:
+  tasks_and_handoffs: issues
+  proposed_changes: pull_requests
+  decisions: markdown_and_adr
+  handoff_required_fields:
+    - objective
+    - context
+    - deliverables
+    - acceptance_criteria
+    - assigned_role
+    - status
+    - decisions_requiring_approval
+  statuses: [ready, in-progress, blocked, in-review, done]
+
+documents:
+  - aios/governance/OPERATING_PRINCIPLES.md
+  - aios/governance/GOVERNANCE.md
+  - aios/governance/INHERITANCE.md
+  - aios/governance/APPROVALS.md
+  - aios/agents/HANDOFF_PROTOCOL.md
+
+# Keys no descendant may change.
+locks:
+  - governance.source_of_truth
+  - governance.change_process
+  - governance.protected_branches
+  - governance.human_approval.architecture
+  - governance.human_approval.publishing
+  - governance.human_approval.spending
+  - governance.human_approval.integrations
+  - agents.constraints.can_merge
+  - agents.constraints.can_approve_gates
+  - agents.constraints.must_label_generated_content
+  - agents.constraints.may_change_other_roles_decisions
+  - coordination.handoff_required_fields

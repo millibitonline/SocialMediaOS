@@ -1,0 +1,67 @@
+name: Agent hand-off
+description: Hand work to another role (aios/agents/HANDOFF_PROTOCOL.md). All fields are required.
+title: "[handoff] <short objective>"
+labels: ["handoff", "status:ready"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every hand-off must be complete. After filing, add the `role:<assignee>` label.
+        The receiving agent claims it by commenting and switching to `status:in-progress`.
+  - type: input
+    id: from
+    attributes:
+      label: From (role / agent)
+      placeholder: "strategist (chatgpt)"
+    validations:
+      required: true
+  - type: dropdown
+    id: assigned_role
+    attributes:
+      label: Assigned role
+      options: [strategist, creative-director, engineer, human-owner]
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: The outcome wanted, in one or two sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context & references
+      description: Files, ADRs, issues, PRs the receiver must read (links or paths).
+    validations:
+      required: true
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      description: Each artifact and its path in the repo.
+      placeholder: "- projects/travel-lava/CHANNEL.md (voice, visuals, pillars)"
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      placeholder: "- [ ] ..."
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Current status
+      options: [ready, blocked]
+    validations:
+      required: true
+  - type: textarea
+    id: decisions_requiring_approval
+    attributes:
+      label: Decisions requiring approval
+      description: Each decision needing sign-off and who must approve. Write "None" if none.
+    validations:
+      required: true

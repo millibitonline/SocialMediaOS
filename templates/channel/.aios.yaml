@@ -1,0 +1,29 @@
+# Channel project template. Copy templates/channel/ → projects/<channel-id>/
+layer: project
+id: <channel-id>
+name: <Channel Name>
+parent: organization/teams/channels/.aios.yaml
+status: planning
+owners: ["@owner-handle"]
+
+channel:
+  niche: "<one-line niche>"
+  platforms: []            # decided in STRATEGY.md, e.g. [instagram, tiktok, youtube]
+  handles: {}              # filled by the human owner once accounts are secured
+  primary_language: en
+
+capabilities:
+  uses: [content-production, publishing, analytics, financial-reporting]
+
+# Inherited from Organization: content.cadence.posts_per_week (3).
+# To change it, declare an override with human approval:
+# overrides:
+#   - key: content.cadence.posts_per_week
+#     from: 3
+#     to: 5
+#     reason: ""
+#     approved_by: "@handle"
+#     approval_ref: "PR #"
+
+extends: []
+overrides: []

@@ -1,0 +1,10 @@
+channel: <channel-id>
+month: 2026-10
+currency: USD
+entries:
+  # - date: 2026-10-05
+  #   type: cost            # revenue | cost
+  #   category: tools       # see CAPABILITY.md
+  #   description: "Editing software subscription"
+  #   amount: 0.00
+  #   approval_ref: ""      # required for cost entries that were gate:spend actions

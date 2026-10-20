@@ -1,0 +1,106 @@
+# AIOS role registry (Foundation, vendor-neutral).
+#
+# Roles describe WORK, not models. Organizations bind any agent or human to a
+# role in their .aios.yaml under `contributors:` — swapping the model behind a
+# role is a one-line change there and never requires editing this file.
+# Organizations may add roles and extend these (e.g. forge-specific paths such
+# as CI config) under `role_extensions:` in their .aios.yaml; they may not
+# loosen them.
+
+roles:
+  strategist:
+    description: Owns strategy, business models, research, architecture, and evaluation.
+    responsibilities:
+      - business strategy, positioning, audience, and platform choice
+      - channel selection (which channels/projects to launch)
+      - business models and monetization
+      - market research and competitive analysis
+      - architecture and hierarchy design; ADR drafting
+      - evaluation of results against goals; roadmaps and milestones
+      - advisory review of structural PRs
+    owns_decisions:
+      - strategy           # STRATEGY.md
+      - channel-selection
+      - business-model
+      - architecture       # ADRs (owner approves)
+      - roadmap
+    writes:
+      - "docs/adr/**"
+      - "docs/research/**"
+      - "**/STRATEGY.md"
+      - "**/ROADMAP.md"
+      - "projects/*/reports/**/*-review.md"
+      - "projects/*/reports/finance/*-summary.md"
+    may_propose_changes_to:
+      - "aios/**"
+      - "organization/**"
+      - "**/.aios.yaml"
+    gates_may_request: [architecture, spend]
+
+  creative-director:
+    description: Owns creative direction, content development, documentation, and implementation support.
+    responsibilities:
+      - brand and creative direction: voice, tone, and visual identity
+      - content strategy within the channel strategy (pillars, series, formats)
+      - content ideation, scripting, captions, and copy
+      - editorial calendars and series planning
+      - documentation (READMEs, guides, operating docs) for decisions others own
+      - implementation support — drafting files, configs, and scaffolding on request
+        via a hand-off, within the requesting role's decisions
+      - advisory content-quality review
+    owns_decisions:
+      - creative-direction  # CHANNEL.md
+      - content             # content/** up to in-review
+    writes:
+      - "projects/*/content/**"
+      - "projects/*/CHANNEL.md"
+      - "projects/*/features/**/FEATURE.md"
+      - "organization/capabilities/content-production/**"
+      - "docs/**"
+      - "**/README.md"
+    may_propose_changes_to:
+      - "templates/**"
+      - "**/AGENTS.md"
+    gates_may_request: [publish]
+
+  engineer:
+    description: Owns engineering, automation, integrations, production pipelines, testing, and deployment.
+    responsibilities:
+      - repository tooling, validation, and CI
+      - automation and production pipelines (draft → review → schedule)
+      - integration design and build (connecting production requires gate:integration)
+      - testing of tooling, automation, and integrations
+      - deployment of tooling and pipelines (production deployment requires gate:integration)
+      - analytics and reporting data pipelines
+    owns_decisions:
+      - tooling
+      - automation
+      - production-pipeline
+      - integration-design  # owner approves connection
+    writes:
+      - "scripts/**"
+      - "tests/**"
+      - "organization/capabilities/*/automation/**"
+    may_propose_changes_to:
+      - "organization/capabilities/**"
+      - "**/.aios.yaml"
+    gates_may_request: [integration]
+
+  human-owner:
+    description: Accountable human. Final decisions, approvals, resources, and merges.
+    responsibilities:
+      - final decisions, including resolving decision conflicts between roles
+      - approving gated actions (architecture, publish, spend, integration)
+      - resource allocation (budget, accounts, tools, agent access)
+      - merge authorization
+      - resolving escalations
+    writes: ["**"]
+    gates_may_approve: [architecture, publish, spend, integration]
+
+# Rules that apply to every non-human role (cannot be loosened downstream).
+agent_constraints:
+  can_merge: false
+  can_approve_gates: false
+  can_push_to_main: false
+  must_label_generated_content: true
+  may_change_other_roles_decisions: false   # propose via hand-off instead

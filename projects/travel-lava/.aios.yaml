@@ -1,0 +1,21 @@
+layer: project
+id: travel-lava
+name: Travel Lava
+parent: organization/teams/channels/.aios.yaml
+status: planning
+owners: ["@millibitonline"]
+
+channel:
+  niche: "TBD — set in STRATEGY.md (Phase 1)"
+  platforms: []            # TBD in STRATEGY.md
+  handles: {}              # filled by the human owner once accounts are secured
+  primary_language: en
+
+capabilities:
+  uses: [content-production, publishing, analytics, financial-reporting]
+
+features:
+  - features/channel-launch/.aios.yaml
+
+extends: []
+overrides: []
