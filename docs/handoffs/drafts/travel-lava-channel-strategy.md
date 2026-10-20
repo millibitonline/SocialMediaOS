@@ -56,9 +56,8 @@ ready
 - Monetization approach: **human owner**
 - Any spending implied by the production assumptions: **human owner** (`gate:spend`, before any money is committed)
 
-### Delivery note (current integration limitation)
-ChatGPT has read-only repository access (`403` on branch creation). Until that is
-resolved, ChatGPT delivers the full `STRATEGY.md` text in a comment on this issue
-(or through the owner). Claude commits it unchanged in substance on
-`feature/travel-lava-strategy` with `Proposed-by: chatgpt (strategist)` attribution
-and opens the PR (`Closes #<this issue>`). The owner reviews and merges.
+### Delivery note
+ChatGPT commits directly on `feature/travel-lava-strategy` (it writes through the
+owner's GitHub account), marks each commit `Agent: chatgpt (strategist)`, and opens
+the PR (`Closes #<this issue>`). See `docs/AGENT_ACCESS.md` for the shared-identity
+caveats. The owner reviews and merges.
