@@ -46,6 +46,7 @@ external_authority:
   retains_authority_over:
     - product strategy
     - formulation
+    - sourcing
     - pricing
     - commercialization
     - product claims

@@ -20,6 +20,7 @@ social strategy, creative production, distribution, and analytics
 | [`.aios.yaml`](.aios.yaml) | engineer | Project config, channel identities, external authority |
 | [`CHANNELS.md`](CHANNELS.md) | human owner (identities) | Social channel and domain registry |
 | [`EXTERNAL_AUTHORITY.md`](EXTERNAL_AUTHORITY.md) | human owner | PolyCoffee's authority and the approval routing |
+| [`POLYCOFFEE_BUSINESS_BRIEF.md`](POLYCOFFEE_BUSINESS_BRIEF.md) | strategist (owner-approved direction); PolyCoffee for product facts | PolyCoffee business context: segments, brand architecture, marketing phases, 90-day plan, pillars |
 | [`CLAIMS_POLICY.md`](CLAIMS_POLICY.md) | creative-director (editorial standards) | Three-tier review (A/B/C), evidence standards, contextual disclosures |
 | [`claims/APPROVED_CLAIMS.yaml`](claims/APPROVED_CLAIMS.yaml) | PolyCoffee (canonical); mirrored here | Approved product-claims registry mirror (empty) |
 | [`reviews/`](reviews/) | per reviewer | Agent reviews of this project's PRs |
