@@ -1,0 +1,39 @@
+# Coffee.help: approved-claims MIRROR (read-only copy)
+#
+# Canonical owner: PolyCoffee. Canonical location: TBD (owner + PolyCoffee).
+# This file mirrors PolyCoffee's approved product claims so reviewers and agents
+# can check content against them in the repository. If it differs from the
+# canonical registry, the canonical registry wins; correct this file by PR.
+#
+# Rules: projects/coffee-help/CLAIMS_POLICY.md §3.
+# - Agents never add or edit entries on their own. Entries are added only from
+#   PolyCoffee's canonical registry, in a PR the owner approves.
+# - Content cites claims as `claim_ids: [CLM-0001@v1]`.
+# - Only `status: approved` entries within `permitted_context` and before
+#   `review_by` may be used.
+
+registry:
+  canonical_owner: PolyCoffee
+  canonical_location: TBD
+  last_synced: null
+
+claims: []
+  # Entry format (example only, not a real claim):
+  # - id: CLM-0001
+  #   version: v1
+  #   exact_wording: "<verbatim approved wording>"
+  #   evidence:
+  #     - "<citation or link>"
+  #   permitted_context:
+  #     platforms: [youtube, instagram, tiktok]
+  #     formats: [short-video, long-video, carousel]
+  #     content_classes: [C]
+  #     audiences: "<e.g. adults; US>"
+  #   qualifications:
+  #     - "<required qualifier or disclaimer>"
+  #   approver: "<named PolyCoffee approver>"
+  #   qualified_reviewer: "<name, if applicable>"
+  #   approved_at: YYYY-MM-DD
+  #   review_by: YYYY-MM-DD
+  #   status: draft            # draft | approved | suspended | retired | superseded
+  #   supersedes: null

@@ -1,0 +1,90 @@
+layer: project
+id: coffee-help
+name: Coffee.help
+parent: organization/teams/channels/.aios.yaml
+status: planning
+owners: ["@millibitonline"]
+
+channel:
+  brand: Coffee.help
+  niche: >-
+    Educational coffee media: coffee culture and brewing, coffee science,
+    polyphenols and botanical ingredients, flavor exploration, coffee rituals
+    and experimentation.
+  platforms: [youtube, instagram, tiktok]   # accounts confirmed by owner 2026-10-19; priorities TBD in STRATEGY.md
+  primary_language: en                      # TODO(owner): confirm
+  # Confirmed identities. Full registry and status: CHANNELS.md.
+  # `connected: false` = no API/app connection exists. Connecting requires an
+  # ADR + gate:integration. Credentials are never stored in this repository.
+  handles:
+    youtube:
+      handle: "@getcoffeehelp"
+      url: https://www.youtube.com/@getcoffeehelp
+      status: secured
+      connected: false
+    instagram:
+      handle: "@getcoffeehelp"
+      url: https://www.instagram.com/getcoffeehelp/
+      status: secured
+      connected: false
+    tiktok:
+      handle: "@getcoffeehelp"
+      url: https://www.tiktok.com/@getcoffeehelp
+      status: secured
+      connected: false
+  domains:                                  # do not mark purchased until the owner confirms
+    - name: coffee.help
+      status: planned
+    - name: getcoffeehelp.com
+      status: planned
+
+# External business authority. SocialMediaOS does not decide these matters for
+# Coffee.help; it routes them to PolyCoffee. See EXTERNAL_AUTHORITY.md.
+external_authority:
+  organization: PolyCoffee
+  relationship: affiliated   # Coffee.help is affiliated with PolyCoffee
+  retains_authority_over:
+    - product strategy
+    - formulation
+    - pricing
+    - commercialization
+    - product claims
+  approver: TBD              # TODO(owner): named PolyCoffee approver (human, forge handle or process)
+  approval_scope: class_c    # product representations + commercial commitments only (CLAIMS_POLICY.md §2)
+  editorial_independence: true   # PolyCoffee does not control independent coffee education (Class A/B)
+
+capabilities:
+  uses: [content-production, publishing, analytics, financial-reporting]
+
+# Project-specific content rules (new keys; nothing inherited is changed).
+content:
+  claims_policy: projects/coffee-help/CLAIMS_POLICY.md
+  # Three-tier review (CLAIMS_POLICY.md §2). Classify the whole presentation;
+  # mixed content takes the highest class; when unsure, choose the higher class.
+  classes:
+    A:
+      name: general coffee education
+      requires: [sources, owner_publish_approval]
+    B:
+      name: non-commercial health/nutrition education
+      requires: [sources, evidence_standards, stated_limitations, not_medical_advice_note, owner_publish_approval]
+      qualified_review: owner_policy        # default: recommended, not required (owner decision)
+    C:
+      name: PolyCoffee product / commercial
+      requires: [sources, approved_registry_claims, polycoffee_approval, contextual_disclosure, owner_publish_approval]
+      qualified_review: required_for_health_or_nutrition_representations
+  front_matter_extensions: [content_class, claim_ids]
+  approved_claims_registry:
+    canonical_owner: PolyCoffee
+    canonical_location: TBD
+    mirror: projects/coffee-help/claims/APPROVED_CLAIMS.yaml
+  affiliation_disclosure: contextual          # CLAIMS_POLICY.md §5; channel-level transparency always
+  review:
+    requires_external_approval_for:           # in addition to the owner's gate:publish
+      - class_c
+
+features:
+  - features/channel-launch/.aios.yaml
+
+extends: []
+overrides: []
