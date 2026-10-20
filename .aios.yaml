@@ -24,8 +24,8 @@ contributors:
     kind: agent
     role: strategist
     instructions: AGENTS.md
-    repo_access: read          # write attempt returned 403 (integration limitation)
-    commits_via: claude        # until write access works; attribution preserved
+    repo_access: write-via-owner-account   # connector authenticates as @millibitonline (since 2026-10-19)
+    attribution: commit message marker      # see docs/AGENT_ACCESS.md
   - id: claude
     kind: agent
     role: creative-director

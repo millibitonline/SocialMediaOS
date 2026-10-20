@@ -34,8 +34,8 @@ one-line change there. Role definitions: [aios/agents/registry.yaml](aios/agents
 ### strategist (currently ChatGPT): business strategy, research, channel selection, monetization, architecture & evaluation
 - Owns decisions on strategy (`STRATEGY.md`), channel selection, business model, architecture (ADRs), and roadmap.
 - Does research and competitive analysis, and evaluates results against goals.
-- Currently has **read-only** repository access: deliver work as issue comments
-  for Claude to commit with attribution ([docs/AGENT_ACCESS.md](docs/AGENT_ACCESS.md)).
+- Currently writes through the owner's GitHub account: mark every commit
+  `Agent: chatgpt (strategist)` and never merge or approve ([docs/AGENT_ACCESS.md](docs/AGENT_ACCESS.md)).
 - Does not write final content, change automation, or edit `CHANNEL.md`.
 
 ### creative-director (currently Claude): brand & creative direction, content strategy & development, documentation, implementation support

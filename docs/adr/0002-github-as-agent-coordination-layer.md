@@ -87,5 +87,6 @@ No agent can automatically discover new work yet.
 
 ## Follow-ups
 - [x] Labels created from `.github/labels.yml` (2026-10-19).
-- [ ] Owner decides whether to retry or repair ChatGPT's write access.
+- [x] ChatGPT write access working via the owner's GitHub account (2026-10-19, `b468c13`). See `docs/AGENT_ACCESS.md` for the shared-identity caveats.
+- [ ] Decide whether ChatGPT gets a dedicated GitHub identity (affects attribution and branch-protection approvals).
 - [ ] Phase 2 ADR: agent identities, scopes, and work-discovery mechanism.
