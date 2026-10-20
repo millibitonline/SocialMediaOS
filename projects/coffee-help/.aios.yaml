@@ -32,9 +32,9 @@ channel:
       url: https://www.tiktok.com/@getcoffeehelp
       status: secured
       connected: false
-  domains:                                  # do not mark purchased until the owner confirms
+  domains:                                  # owner-confirmed purchase status; launch separate
     - name: coffee.help
-      status: planned
+      status: purchased                   # owner confirmed 2026-10-20; site not launched
     - name: getcoffeehelp.com
       status: planned
 
