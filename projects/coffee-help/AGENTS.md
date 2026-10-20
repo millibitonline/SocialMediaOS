@@ -16,6 +16,7 @@ channel-specific guidance. It does not relax anything above it.
 - Owns the next deliverable, STRATEGY.md.
 - Research and positioning stay within PolyCoffee's authority. Don't set product
   strategy, pricing, or commercialization.
+- Preserve editorial independence. Audience insights go to PolyCoffee as recommendations.
 
 ### creative-director (Claude)
 - Owns editorial standards (CLAIMS_POLICY.md) and, after strategy, CHANNEL.md.
@@ -29,6 +30,10 @@ channel-specific guidance. It does not relax anything above it.
 ### Everyone
 - Never log in to, connect, or post from @getcoffeehelp accounts.
 - Never store credentials in the repository.
-- Never write a health claim or a PolyCoffee product claim without following
-  CLAIMS_POLICY.md and getting PolyCoffee approval.
+- Classify every piece as Class A, B, or C (CLAIMS_POLICY.md §2) by its whole
+  presentation. When unsure, choose the higher class.
+- Never make a PolyCoffee product representation that isn't an approved registry
+  claim (`claims/APPROVED_CLAIMS.yaml`). Never add registry entries yourself.
+- Class C needs PolyCoffee approval. PolyCoffee does not control independent
+  coffee education (Class A/B).
 - Never mark coffee.help or getcoffeehelp.com as purchased until the owner confirms.

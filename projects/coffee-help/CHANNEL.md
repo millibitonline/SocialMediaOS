@@ -29,7 +29,7 @@ exploration, coffee rituals and experimentation.
 |-----------|---------|--------|---------|
 
 ## Guardrails
-- Claims: follow [CLAIMS_POLICY.md](CLAIMS_POLICY.md). No unsubstantiated health claims.
-- PolyCoffee: product mentions need PolyCoffee approval and an affiliation disclosure.
+- Claims: follow [CLAIMS_POLICY.md](CLAIMS_POLICY.md). Every piece is Class A, B, or C. No unsubstantiated health claims.
+- PolyCoffee: product representations use approved registry claims only, Class C needs PolyCoffee approval, and disclosures depend on context (§5).
 - Rights: only licensed or original music, footage, and images.
 - Disclosures: AI-assisted and sponsored labels per organization rules.

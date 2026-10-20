@@ -27,7 +27,8 @@ within PolyCoffee's authority and the claims policy.
 | 0.1 | Scaffold project, register channel identities and domains | creative-director (implementation support) | done | feature/coffee-help-init |
 | 0.2 | External authority, claims policy, integration requirements documented | creative-director | done (pending approval) | feature/coffee-help-init |
 | 0.3 | Owner supplies account details listed in INTEGRATIONS.md §4 (no credentials) | human owner | todo | n/a |
-| 0.4 | Name PolyCoffee approver, agree disclosure wording | human owner + PolyCoffee | todo | n/a |
+| 0.4 | Name PolyCoffee approver, agree channel-level disclosure wording, locate canonical claims registry | human owner + PolyCoffee | todo | n/a |
+| 0.5 | Address strategist review of PR #2 (tiers, claims registry, contextual disclosures) | creative-director | done (pending re-review) | feature/coffee-help-init |
 | 1.1 | Positioning, audience, platform priorities → STRATEGY.md | strategist | todo | feature/coffee-help-strategy |
 | 1.2 | 90-day metric targets | strategist | todo | feature/coffee-help-strategy |
 | 1.3 | Monetization hypothesis (within PolyCoffee's authority) | strategist | todo | feature/coffee-help-strategy |

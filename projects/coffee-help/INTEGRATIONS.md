@@ -77,9 +77,32 @@ Coffee.help. They serve every channel.
   `gate:publish` approval (and the PolyCoffee approval where required) right
   before any API call.
 - **Media hosting** with public URLs (needed by Instagram).
-- **Audit log** of every outbound call, committed to the repo.
+- **Audit log** of every outbound call, committed to the repo, **sanitized**
+  (no tokens or personal data) with a defined retention period.
 - **Analytics importer** for each platform's insights API (read-only scopes),
   feeding the standard metric snapshots.
+
+### Operational requirements (added from the strategist review, 2026-10-19)
+- **Token lifecycle:** where tokens live, how they are refreshed and rotated, and
+  how expiry is detected and alerted. No token is ever stored in the repo.
+- **Recovery and revocation:** a documented way to revoke each app's access at
+  once (lost device, compromised token, agent misbehavior) and to recover
+  account access. Account recovery stays with the owner.
+- **Emergency stop:** one owner-controlled switch that halts all scheduled and
+  in-flight publishing across platforms. Automation checks it before every call.
+- **Retries and idempotency:** each publish attempt carries a stable idempotency
+  key (content id + commit SHA + platform), so a retry can't double-post.
+  Backoff respects platform rate limits.
+- **Media rights:** the pipeline refuses to publish media whose
+  **Sources & rights** entry is missing or unresolved.
+- **Corrections and removal:** a defined path to edit, correct, or take down a
+  published post (and record it in the content file), including for claims later
+  suspended in the approved-claims registry.
+- **Analytics identifiers:** store each platform's post ID and permalink against
+  the content id, so analytics and corrections map back to the source file.
+- **Disclosure flags in the payload:** AI-media labels and material-connection or
+  branded-content flags are set from content front matter (`ai_assisted`,
+  `sponsored`, `content_class`), not added by hand.
 
 ## 4. Missing information required for automation
 
@@ -97,7 +120,10 @@ Coffee.help. They serve every channel.
 | 10 | Posting timezone and scheduling windows | Strategist / owner | Scheduler |
 | 11 | Brand assets (logo, colors, fonts, intro/outro) | Creative-director, with owner approval | Templates and thumbnails |
 | 12 | Link destination for bios (a domain, once purchased, or a link page) | Owner | Profile setup |
-| 13 | Whether a qualified review of the claims policy is required, and by whom | Owner | Health or claim content |
+| 13 | Whether a qualified review is required for Class B (and who performs reviews for Class C health/nutrition representations) | Owner | Health or claim content |
+| 14 | Canonical location of PolyCoffee's approved-claims registry and how the mirror is synced | PolyCoffee + owner | Class C content |
+| 15 | Emergency-stop owner and mechanism; token rotation and revocation procedure | Engineer proposes via ADR, owner approves | Any live connection |
+| 16 | Audit-log retention period | Owner | Any live connection |
 
 ## 5. Proposed sequence (each step its own PR or ADR)
 1. Owner supplies items 1–4 and 7 (no credentials in the repo).
