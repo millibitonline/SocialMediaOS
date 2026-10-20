@@ -1,0 +1,71 @@
+layer: project
+id: coffee-help
+name: Coffee.help
+parent: organization/teams/channels/.aios.yaml
+status: planning
+owners: ["@millibitonline"]
+
+channel:
+  brand: Coffee.help
+  niche: >-
+    Educational coffee media: coffee culture and brewing, coffee science,
+    polyphenols and botanical ingredients, flavor exploration, coffee rituals
+    and experimentation.
+  platforms: [youtube, instagram, tiktok]   # accounts confirmed by owner 2026-10-19; priorities TBD in STRATEGY.md
+  primary_language: en                      # TODO(owner): confirm
+  # Confirmed identities. Full registry and status: CHANNELS.md.
+  # `connected: false` = no API/app connection exists. Connecting requires an
+  # ADR + gate:integration. Credentials are never stored in this repository.
+  handles:
+    youtube:
+      handle: "@getcoffeehelp"
+      url: https://www.youtube.com/@getcoffeehelp
+      status: secured
+      connected: false
+    instagram:
+      handle: "@getcoffeehelp"
+      url: https://www.instagram.com/getcoffeehelp/
+      status: secured
+      connected: false
+    tiktok:
+      handle: "@getcoffeehelp"
+      url: https://www.tiktok.com/@getcoffeehelp
+      status: secured
+      connected: false
+  domains:                                  # do not mark purchased until the owner confirms
+    - name: coffee.help
+      status: planned
+    - name: getcoffeehelp.com
+      status: planned
+
+# External business authority. SocialMediaOS does not decide these matters for
+# Coffee.help; it routes them to PolyCoffee. See EXTERNAL_AUTHORITY.md.
+external_authority:
+  organization: PolyCoffee
+  relationship: affiliated   # Coffee.help is affiliated with PolyCoffee
+  retains_authority_over:
+    - product strategy
+    - formulation
+    - pricing
+    - commercialization
+    - product claims
+  approver: TBD              # TODO(owner): named PolyCoffee approver (human, forge handle or process)
+
+capabilities:
+  uses: [content-production, publishing, analytics, financial-reporting]
+
+# Project-specific content rules (new keys; nothing inherited is changed).
+content:
+  claims_policy: projects/coffee-help/CLAIMS_POLICY.md
+  affiliation_disclosure_required: true       # any PolyCoffee product or brand mention
+  review:
+    requires_external_approval_for:           # in addition to the owner's gate:publish
+      - polycoffee_product_mentions
+      - product_claims
+      - health_or_nutrition_claims
+
+features:
+  - features/channel-launch/.aios.yaml
+
+extends: []
+overrides: []

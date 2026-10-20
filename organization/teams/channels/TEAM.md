@@ -9,6 +9,7 @@ makes sure each channel uses the shared capabilities instead of rebuilding them.
 | Project | Status | Path |
 |---------|--------|------|
 | Travel Lava | planning | [projects/travel-lava](../../../projects/travel-lava/README.md) |
+| Coffee.help | planning | [projects/coffee-help](../../../projects/coffee-help/README.md) (affiliated with PolyCoffee) |
 
 ## How a new channel is added
 Follow [LAUNCH_PLAYBOOK.md](LAUNCH_PLAYBOOK.md).

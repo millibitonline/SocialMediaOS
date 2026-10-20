@@ -7,6 +7,7 @@ owners: ["@millibitonline"]
 
 projects:
   - projects/travel-lava/.aios.yaml
+  - projects/coffee-help/.aios.yaml
 
 launch:
   template: templates/channel
