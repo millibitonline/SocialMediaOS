@@ -18,7 +18,7 @@ approved integration exists, by ADR + `gate:integration`) → `active` (publishi
 
 | Domain | Status | Notes |
 |--------|--------|-------|
-| coffee.help | **Planned** (not purchased) | Do not mark purchased until the owner confirms. Buying it is a `gate:spend` action. |
+| coffee.help | **Purchased** (owner confirmed 2026-10-20) | Domain secured; hosting and website launch not yet confirmed. |
 | getcoffeehelp.com | **Planned** (not purchased) | Same as above. |
 
 ## Rules
