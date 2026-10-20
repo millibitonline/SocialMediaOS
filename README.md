@@ -92,6 +92,7 @@ organization/
   teams/channels/               Channels team + launch playbook
 templates/channel/              Copy to start a new channel
 projects/travel-lava/   First channel (planning)
+projects/coffee-help/   Coffee.help channel (planning; affiliated with PolyCoffee)
 docs/OPERATING_MODEL.md         How agents discover work, hand off, review, and trace work
 docs/AGENT_ACCESS.md            Current per-agent repository access + proxy-commit rules
 docs/REPOSITORY_SETTINGS.md     Recommended branch protection for main
