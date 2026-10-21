@@ -9,8 +9,8 @@ These are distinct and must not be conflated in content, configuration, or claim
 | Name | What it is | Authority |
 |------|-----------|-----------|
 | **Coffee.help** | Educational media brand (this project) | SocialMediaOS: social strategy, creative, distribution, analytics |
-| **PolyCoffee** | Coffee product-development business | Product strategy, formulation, pricing, commercialization, product claims |
-| **The Daily Addition** | Named in the strategist review as a *possible* PolyCoffee product brand. Status unconfirmed. | PolyCoffee, if it proceeds. No Coffee.help content references it until the owner confirms it. |
+| **PolyCoffee** | Coffee product-development business | Product strategy, formulation, sourcing, pricing, commercialization, product claims |
+| **The Daily Addition** | Proposed consumer-facing PolyCoffee product brand. **Not finalized** (owner-approved business brief, 2026-10-20). No product names or formulations approved for commercial use. | PolyCoffee. Coffee.help content does not reference it until PolyCoffee finalizes it and approves its use (Class C). |
 
 ## Who decides what
 
@@ -18,6 +18,7 @@ These are distinct and must not be conflated in content, configuration, or claim
 |------|-----------|--------------------|
 | Product strategy | **PolyCoffee** | None. References only what PolyCoffee has approved for public use. |
 | Formulation | **PolyCoffee** | None. Never describes ingredients, ratios, or processes beyond approved claims. |
+| Sourcing | **PolyCoffee** | None. Never describes suppliers or origins of PolyCoffee ingredients beyond approved claims. |
 | Pricing | **PolyCoffee** | None. Never states or implies prices, discounts, or offers without approval. |
 | Commercialization (launches, availability, partnerships, sales) | **PolyCoffee** | None. Never announces or implies availability or commercial commitments. |
 | Product claims | **PolyCoffee** (owns the canonical approved-claims registry) | Uses only approved registry claims within their permitted context |
@@ -69,4 +70,4 @@ Disclosure depends on context ([CLAIMS_POLICY.md §5](CLAIMS_POLICY.md#5-disclos
 - Where PolyCoffee keeps the canonical approved-claims registry, and how the mirror is synced.
 - The exact nature of the affiliation to disclose (ownership, sponsorship, shared
   founders, etc.) and the channel-level wording.
-- Confirm or remove The Daily Addition from this document.
+- ~~Confirm or remove The Daily Addition~~: confirmed as a proposed, not-finalized brand in [POLYCOFFEE_BUSINESS_BRIEF.md](POLYCOFFEE_BUSINESS_BRIEF.md).

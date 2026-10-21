@@ -6,6 +6,7 @@ channel-specific guidance. It does not relax anything above it.
 ## Read before working here
 1. [`.aios.yaml`](.aios.yaml): effective config, channel identities, external authority
 2. [`EXTERNAL_AUTHORITY.md`](EXTERNAL_AUTHORITY.md): what PolyCoffee decides
+   (business context: [`POLYCOFFEE_BUSINESS_BRIEF.md`](POLYCOFFEE_BUSINESS_BRIEF.md))
 3. [`CLAIMS_POLICY.md`](CLAIMS_POLICY.md): health, nutrition, and product claim rules
 4. [`features/channel-launch/FEATURE.md`](features/channel-launch/FEATURE.md): current phase
 5. [`STRATEGY.md`](STRATEGY.md) and [`CHANNEL.md`](CHANNEL.md)
@@ -36,4 +37,5 @@ channel-specific guidance. It does not relax anything above it.
   claim (`claims/APPROVED_CLAIMS.yaml`). Never add registry entries yourself.
 - Class C needs PolyCoffee approval. PolyCoffee does not control independent
   coffee education (Class A/B).
-- Never mark coffee.help or getcoffeehelp.com as purchased until the owner confirms.
+- coffee.help is purchased (owner confirmed 2026-10-20). Never mark getcoffeehelp.com
+  as purchased, or any site as launched, until the owner confirms.
