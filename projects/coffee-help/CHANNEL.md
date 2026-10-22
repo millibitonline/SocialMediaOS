@@ -12,6 +12,8 @@
 - We never sound like: _TBD_ (at minimum: never like a health-product ad)
 
 ## Visual direction
+Working hypothesis (pre-strategy): [assets/prompts/VISUAL_STYLE.md](assets/prompts/VISUAL_STYLE.md).
+
 - Palette / mood: _TBD_
 - Typography / on-screen text style: _TBD_
 - Shot style / imagery: _TBD_

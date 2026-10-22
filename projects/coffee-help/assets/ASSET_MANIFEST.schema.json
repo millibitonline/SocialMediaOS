@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/millibitonline/SocialMediaOS/projects/coffee-help/assets/ASSET_MANIFEST.schema.json",
+  "title": "Coffee.help asset manifest",
+  "description": "Metadata record for one Coffee.help media asset (one variation, one version). Media files live in external storage; this record is the source of truth for identity, provenance, rights, and review status. Draft records may leave most fields null until the asset is generated, uploaded, and reviewed. Never put credentials, access tokens, or private sharing links in a manifest. See LIBRARY_STRUCTURE.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "asset_id",
+    "project_id",
+    "version",
+    "asset_type",
+    "source_category",
+    "description",
+    "review_status",
+    "rights_status",
+    "storage_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "description": "Version of this schema the record follows.",
+      "const": "1.0.0"
+    },
+    "asset_id": {
+      "description": "Stable identifier, independent of storage provider. Content-bound: CH-<content 3 digits>-<part><2 digits>-V<variation 2 digits>, where part is S (scene), A (audio), T (thumbnail), F (final export). Library (not tied to one content piece): CH-LIB-<REF|TPL|SND>-<4 digits>.",
+      "type": "string",
+      "pattern": "^CH-([0-9]{3}-[SATF][0-9]{2}-V[0-9]{2}|LIB-(REF|TPL|SND)-[0-9]{4})$"
+    },
+    "project_id": {
+      "description": "SocialMediaOS project id.",
+      "const": "coffee-help"
+    },
+    "content_id": {
+      "description": "Content sequence id this asset belongs to (e.g. CH-001). Matches the `content_ref` front matter of the content file. Null for library assets.",
+      "type": ["string", "null"],
+      "pattern": "^CH-[0-9]{3}$"
+    },
+    "scene_id": {
+      "description": "Scene/part token within the content piece (e.g. S01). Null for library assets.",
+      "type": ["string", "null"],
+      "pattern": "^[SATF][0-9]{2}$"
+    },
+    "version": {
+      "description": "Revision of this exact variation, starting at 1. A new variation gets a new asset_id; a revision of the same variation increments version.",
+      "type": "integer",
+      "minimum": 1
+    },
+    "asset_type": {
+      "description": "What the media is.",
+      "enum": [
+        "image",
+        "storyboard_frame",
+        "video_clip",
+        "audio",
+        "final_video",
+        "thumbnail",
+        "brand_reference",
+        "production_project"
+      ]
+    },
+    "source_category": {
+      "description": "Where the asset came from. Drives rights handling.",
+      "enum": [
+        "ai_generated",
+        "licensed_stock",
+        "original",
+        "third_party_contributed",
+        "composite"
+      ]
+    },
+    "filename": {
+      "description": "Canonical filename: <asset_id>_v<version>.<ext>. Null until a file exists.",
+      "type": ["string", "null"],
+      "pattern": "^CH-[A-Z0-9-]+_v[0-9]+\\.[a-z0-9]+$"
+    },
+    "description": {
+      "description": "Plain-language description of what the asset shows or contains.",
+      "type": "string",
+      "minLength": 1
+    },
+    "storage_status": {
+      "description": "Whether the media file exists in authorized storage.",
+      "enum": ["not_created", "pending_upload", "uploaded", "removed"]
+    },
+    "storage_provider": {
+      "description": "Storage backend holding the media. Null until decided for this asset.",
+      "type": ["string", "null"],
+      "enum": ["google_drive", "other", null]
+    },
+    "storage_file_id": {
+      "description": "Provider's stable file identifier (e.g. a Drive file ID). Not a sharing link.",
+      "type": ["string", "null"]
+    },
+    "storage_url": {
+      "description": "Access-controlled canonical URL for authorized users. Must not be a public or anyone-with-the-link sharing URL, and must not embed tokens or resource keys.",
+      "type": ["string", "null"],
+      "format": "uri",
+      "not": {
+        "type": "string",
+        "pattern": "(usp=sharing|resourcekey=|access_token=|token=|sig=|key=)"
+      }
+    },
+    "generation_provider": {
+      "description": "Service that generated the asset (AI-generated or composite only), e.g. adobe_firefly.",
+      "type": ["string", "null"]
+    },
+    "generation_model": {
+      "description": "Model name and version as reported by the provider. Null if unknown; never guessed.",
+      "type": ["string", "null"]
+    },
+    "generation_prompt": {
+      "description": "Exact prompt used, verbatim.",
+      "type": ["string", "null"]
+    },
+    "negative_prompt": {
+      "description": "Separate negative prompt, if the provider used one. Exclusions written inside the main prompt stay in generation_prompt.",
+      "type": ["string", "null"]
+    },
+    "generation_settings": {
+      "description": "Provider settings as recorded at generation time (e.g. requested aspect ratio, style presets, seed, content type). Free-form; record only what is known.",
+      "type": ["object", "null"]
+    },
+    "created_at": {
+      "description": "When the asset was created/generated (ISO 8601). Null if unknown.",
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "created_by": {
+      "description": "Who created or generated it: a human forge handle (e.g. @millibitonline), an agent id with role (e.g. chatgpt (strategist)), or an external collaborator id. Null if unconfirmed.",
+      "type": ["string", "null"]
+    },
+    "aspect_ratio": {
+      "description": "Actual aspect ratio of the file (W:H), measured from the file. Requested ratio belongs in generation_settings.",
+      "type": ["string", "null"],
+      "pattern": "^[0-9]+:[0-9]+$"
+    },
+    "width": {
+      "description": "Actual width in pixels, from the file.",
+      "type": ["integer", "null"],
+      "minimum": 1
+    },
+    "height": {
+      "description": "Actual height in pixels, from the file.",
+      "type": ["integer", "null"],
+      "minimum": 1
+    },
+    "duration_seconds": {
+      "description": "Duration for video/audio. Null for stills.",
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "rights_status": {
+      "description": "Rights clearance for use in Coffee.help content. Only `cleared` assets may appear in content submitted for gate:publish.",
+      "enum": ["pending_review", "cleared", "restricted", "not_cleared"]
+    },
+    "license_type": {
+      "description": "Governing license or terms, e.g. 'Adobe Firefly terms (version as of generation)', 'Adobe Stock Standard License', 'owner original', 'contributor agreement <ref>'. Null until determined.",
+      "type": ["string", "null"]
+    },
+    "source_assets": {
+      "description": "asset_ids this asset was derived from or composited from (inputs, references, edits).",
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "review_status": {
+      "description": "Creative asset lifecycle. Asset approval is NOT publication approval.",
+      "enum": ["proposed", "generated", "in_review", "approved", "rejected", "archived"]
+    },
+    "approved_by": {
+      "description": "Human forge handle that approved the asset. Agents cannot approve.",
+      "type": ["string", "null"]
+    },
+    "approved_at": {
+      "description": "Approval time (ISO 8601).",
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "approval_ref": {
+      "description": "Where the approval is recorded (PR number/review or approval-log entry).",
+      "type": ["string", "null"]
+    },
+    "usage_restrictions": {
+      "description": "Restrictions that travel with the asset (e.g. 'not for paid ads', 'no use as AI training/input', 'internal reference only').",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": {
+      "description": "Free-text notes, including pending items.",
+      "type": ["string", "null"]
+    }
+  },
+  "allOf": [
+    {
+      "description": "Approved assets must have a recorded human approval.",
+      "if": { "properties": { "review_status": { "const": "approved" } }, "required": ["review_status"] },
+      "then": {
+        "required": ["approved_by", "approved_at", "approval_ref"],
+        "properties": {
+          "approved_by": { "type": "string", "pattern": "^@" },
+          "approved_at": { "type": "string" },
+          "approval_ref": { "type": "string" }
+        }
+      }
+    },
+    {
+      "description": "Uploaded assets must identify their storage location and file.",
+      "if": { "properties": { "storage_status": { "const": "uploaded" } }, "required": ["storage_status"] },
+      "then": {
+        "required": ["storage_provider", "storage_file_id", "filename"],
+        "properties": {
+          "storage_provider": { "type": "string" },
+          "storage_file_id": { "type": "string" },
+          "filename": { "type": "string" }
+        }
+      }
+    },
+    {
+      "description": "Cleared assets must name their license.",
+      "if": { "properties": { "rights_status": { "const": "cleared" } }, "required": ["rights_status"] },
+      "then": {
+        "required": ["license_type"],
+        "properties": { "license_type": { "type": "string" } }
+      }
+    },
+    {
+      "description": "AI-generated assets must record the provider and prompt.",
+      "if": { "properties": { "source_category": { "const": "ai_generated" } }, "required": ["source_category"] },
+      "then": {
+        "required": ["generation_provider", "generation_prompt"],
+        "properties": {
+          "generation_provider": { "type": "string" },
+          "generation_prompt": { "type": "string" }
+        }
+      }
+    },
+    {
+      "description": "Composite assets must list their source assets.",
+      "if": { "properties": { "source_category": { "const": "composite" } }, "required": ["source_category"] },
+      "then": { "required": ["source_assets"], "properties": { "source_assets": { "minItems": 1 } } }
+    },
+    {
+      "description": "Content-bound ids must carry content_id and scene_id.",
+      "if": { "properties": { "asset_id": { "pattern": "^CH-[0-9]{3}-" } }, "required": ["asset_id"] },
+      "then": {
+        "required": ["content_id", "scene_id"],
+        "properties": { "content_id": { "type": "string" }, "scene_id": { "type": "string" } }
+      }
+    }
+  ]
+}
