@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "CH-001-S01-V04",
+  "project_id": "coffee-help",
+  "content_id": "CH-001",
+  "scene_id": "S01",
+  "version": 1,
+  "asset_type": "storyboard_frame",
+  "source_category": "ai_generated",
+  "filename": null,
+  "description": "A handmade dark charcoal ceramic coffee cup filled with black coffee, resting on a weathered wooden table beside a window. Soft natural morning light, delicate steam, subdued earthy colors, shallow depth of field, and a quiet editorial atmosphere. Portrait orientation.",
+  "storage_status": "pending_upload",
+  "storage_provider": "google_drive",
+  "storage_file_id": null,
+  "storage_url": null,
+  "generation_provider": "adobe_firefly",
+  "generation_model": null,
+  "generation_prompt": "Photorealistic editorial still life of freshly brewed black coffee in a small handmade dark charcoal ceramic cup on a natural walnut table. Soft early morning sunlight enters from a window on the left, illuminating delicate steam rising from the coffee.\n\nRich coffee-brown tones, warm ivory highlights, subtle natural imperfections, tactile materials, elegant Japanese-inspired minimalism. Intimate and curious atmosphere, premium independent coffee magazine photography.\n\n85mm lens, shallow depth of field, realistic liquid surface, refined composition, soft film grain.\n\nVertical 9:16 framing with generous negative space in the upper third for future typography. No people, no text, no logos, no packaging, no artificial-looking effects.",
+  "negative_prompt": null,
+  "generation_settings": {
+    "requested_aspect_ratio": "9:16",
+    "requested_orientation": "portrait",
+    "other_settings": null
+  },
+  "created_at": null,
+  "created_by": null,
+  "aspect_ratio": null,
+  "width": null,
+  "height": null,
+  "duration_seconds": null,
+  "rights_status": "pending_review",
+  "license_type": null,
+  "source_assets": [],
+  "review_status": "in_review",
+  "approved_by": null,
+  "approved_at": null,
+  "approval_ref": null,
+  "usage_restrictions": [
+    "Storyboard/visual reference only until rights_status is cleared and the asset is approved",
+    "Not approved for publication; any use in content still requires gate:publish"
+  ],
+  "notes": "Coffee.help Video 001, scene 01, variation 04. Selected as the visual reference for the scene; pending formal owner approval. Generated with Adobe Firefly. Pending from owner: original file (exported from Firefly), Google Drive upload and file ID, actual dimensions and aspect ratio, Firefly model/version and settings as shown in Firefly, generation timestamp, who generated it, and a rights determination. The description reflects the delivered image (weathered wooden table); the prompt requested a natural walnut table."
+}

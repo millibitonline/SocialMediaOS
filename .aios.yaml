@@ -54,6 +54,8 @@ capabilities:
       path: organization/capabilities/analytics
     - id: financial-reporting
       path: organization/capabilities/financial-reporting
+    - id: asset-management
+      path: organization/capabilities/asset-management
 
 content:
   pipeline: [idea, draft, in-review, approved, scheduled, published]

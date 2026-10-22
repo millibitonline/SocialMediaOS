@@ -5,6 +5,7 @@ parent: .aios.yaml
 stages: [ideas, drafts, in-review, approved, published]
 file_naming: "YYYY-MM-DD-<slug>.md"
 required_front_matter: [id, channel, stage, format, platforms, ai_assisted, sponsored]
+optional_front_matter: [pillar, series, generated_by, target_publish_date, content_ref, asset_ids]
 generated_content_requires: [generated_by]
 locks:
   - required_front_matter

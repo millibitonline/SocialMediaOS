@@ -5,3 +5,20 @@
 secrets/
 __pycache__/
 .DS_Store
+
+# Media never lives in git: asset files go to owner-authorized storage,
+# manifests (JSON) stay here. See projects/coffee-help/assets/README.md.
+projects/*/assets/**/*.png
+projects/*/assets/**/*.jpg
+projects/*/assets/**/*.jpeg
+projects/*/assets/**/*.webp
+projects/*/assets/**/*.gif
+projects/*/assets/**/*.tif
+projects/*/assets/**/*.tiff
+projects/*/assets/**/*.psd
+projects/*/assets/**/*.mp4
+projects/*/assets/**/*.mov
+projects/*/assets/**/*.wav
+projects/*/assets/**/*.mp3
+projects/*/assets/**/*.aac
+projects/*/assets/**/*.prproj

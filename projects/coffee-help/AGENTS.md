@@ -10,6 +10,7 @@ channel-specific guidance. It does not relax anything above it.
 3. [`CLAIMS_POLICY.md`](CLAIMS_POLICY.md): health, nutrition, and product claim rules
 4. [`features/channel-launch/FEATURE.md`](features/channel-launch/FEATURE.md): current phase
 5. [`STRATEGY.md`](STRATEGY.md) and [`CHANNEL.md`](CHANNEL.md)
+6. [`assets/README.md`](assets/README.md): before creating, referencing, or reusing any media
 
 ## Current phase: 1 (Strategy)
 
@@ -30,7 +31,8 @@ channel-specific guidance. It does not relax anything above it.
 
 ### Everyone
 - Never log in to, connect, or post from @getcoffeehelp accounts.
-- Never store credentials in the repository.
+- Never store credentials in the repository. Never commit media files. Assets are
+  manifests in `assets/manifests/` with files in owner-authorized storage.
 - Classify every piece as Class A, B, or C (CLAIMS_POLICY.md §2) by its whole
   presentation. When unsure, choose the higher class.
 - Never make a PolyCoffee product representation that isn't an approved registry

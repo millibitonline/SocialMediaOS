@@ -29,6 +29,7 @@ social strategy, creative production, distribution, and analytics
 | [`CHANNEL.md`](CHANNEL.md) | creative-director (Claude) | Voice, visuals, pillars, series |
 | [`AGENTS.md`](AGENTS.md) | all | Project-specific agent instructions |
 | [`features/channel-launch/`](features/channel-launch/FEATURE.md) | team | Launch plan, phases 0–4 |
+| [`assets/`](assets/README.md) | creative-director (specs); human owner (approvals) | Coffee.help asset manifests and visual style (library rules: org asset-management capability). No media in git. |
 | [`content/`](content/) | creative-director | Content pipeline by stage (empty) |
 | [`reports/`](reports/) | engineer/strategist | Analytics and finance (empty) |
 
