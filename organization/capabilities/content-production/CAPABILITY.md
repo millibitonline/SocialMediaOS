@@ -23,6 +23,8 @@ generated_by: claude        # required while AI-generated and unapproved
 ai_assisted: true           # drives platform disclosure
 sponsored: false
 target_publish_date: 2026-10-25
+content_ref: TL-001          # optional: content sequence id linking to assets (asset-management)
+asset_ids: [TL-001-F01-V01]  # optional: assets used in this piece
 ---
 ```
 

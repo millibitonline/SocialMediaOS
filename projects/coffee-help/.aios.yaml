@@ -55,7 +55,14 @@ external_authority:
   editorial_independence: true   # PolyCoffee does not control independent coffee education (Class A/B)
 
 capabilities:
-  uses: [content-production, publishing, analytics, financial-reporting]
+  uses: [content-production, publishing, analytics, financial-reporting, asset-management]
+
+# Asset library (organization/capabilities/asset-management).
+asset_library:
+  path: projects/coffee-help/assets
+  asset_prefix: CH
+  storage_root: "Coffee.help/"              # not created yet; owner action
+  storage_provider_proposed: google_drive   # not connected
 
 # Project-specific content rules (new keys; nothing inherited is changed).
 content:
@@ -74,12 +81,7 @@ content:
       name: PolyCoffee product / commercial
       requires: [sources, approved_registry_claims, polycoffee_approval, contextual_disclosure, owner_publish_approval]
       qualified_review: required_for_health_or_nutrition_representations
-  front_matter_extensions: [content_class, claim_ids, content_ref]   # content_ref links a piece to its assets (e.g. CH-001)
-  asset_library:
-    path: projects/coffee-help/assets
-    manifest_schema: projects/coffee-help/assets/ASSET_MANIFEST.schema.json
-    media_in_git: false
-    storage_provider_proposed: google_drive   # not created or connected; owner action
+  front_matter_extensions: [content_class, claim_ids]
   approved_claims_registry:
     canonical_owner: PolyCoffee
     canonical_location: TBD

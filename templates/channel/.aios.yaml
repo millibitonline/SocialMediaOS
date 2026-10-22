@@ -13,7 +13,13 @@ channel:
   primary_language: en
 
 capabilities:
-  uses: [content-production, publishing, analytics, financial-reporting]
+  uses: [content-production, publishing, analytics, financial-reporting, asset-management]
+
+asset_library:
+  path: projects/<channel-id>/assets
+  asset_prefix: <XX>          # 2-4 uppercase letters, unique across channels
+  storage_root: "<Channel Name>/"
+  storage_provider_proposed: google_drive
 
 # Inherited from Organization: content.cadence.posts_per_week (3).
 # To change it, declare an override with human approval:

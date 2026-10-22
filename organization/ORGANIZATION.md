@@ -43,6 +43,7 @@ has a `CAPABILITY.md` (contract) and `.aios.yaml` (rules projects inherit).
 | [publishing](capabilities/publishing/CAPABILITY.md) | engineer | Approved → scheduled → published, gated by human approval |
 | [analytics](capabilities/analytics/CAPABILITY.md) | engineer (+ strategist for insight) | Standard metrics and reporting cadence |
 | [financial-reporting](capabilities/financial-reporting/CAPABILITY.md) | strategist (+ engineer for data) | Revenue, cost, and P&L per channel |
+| [asset-management](capabilities/asset-management/CAPABILITY.md) | creative-director (+ engineer for storage) | Asset manifests, lifecycle, rights/provenance, storage abstraction (no media in git) |
 
 ## Organization-level rules (beyond Foundation)
 - Production integrations are **off** (`integrations.production_enabled: false`, locked).

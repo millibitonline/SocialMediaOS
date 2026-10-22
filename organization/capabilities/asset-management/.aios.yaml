@@ -1,0 +1,19 @@
+id: asset-management
+kind: capability
+owner_role: creative-director
+parent: .aios.yaml
+manifest_schema: organization/capabilities/asset-management/ASSET_MANIFEST.schema.json
+manifest_location: "projects/<channel>/assets/manifests/<asset_id>.json"
+media_in_git: false
+lifecycle: [proposed, generated, in_review, approved, rejected, archived]
+rights_statuses: [pending_review, cleared, restricted, not_cleared]
+source_categories: [ai_generated, licensed_stock, original, third_party_contributed, composite]
+asset_approval_is_publication_approval: false
+asset_approval_requires: human
+usable_for_publication_requires: [review_status_approved, rights_status_cleared, usage_restrictions_permit, content_gate_publish]
+project_must_declare: [asset_library.path, asset_library.asset_prefix]
+locks:
+  - media_in_git
+  - asset_approval_is_publication_approval
+  - asset_approval_requires
+  - usable_for_publication_requires

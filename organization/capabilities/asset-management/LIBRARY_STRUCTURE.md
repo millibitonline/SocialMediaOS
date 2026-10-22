@@ -1,36 +1,44 @@
-# Asset Library Structure: Coffee.help
+# Asset Library Structure
 
-**Status:** proposed. The storage folders below **do not exist yet**. The owner
-creates or authorizes them in a later step.
+Applies to every SocialMediaOS channel that uses the
+[asset-management capability](CAPABILITY.md). Examples use Coffee.help
+(`asset_prefix: CH`).
 
-## 1. Proposed storage hierarchy (Google Drive)
+**Status:** the storage layout is a template. No storage folders exist until
+the owner creates or authorizes them for a channel.
+
+## 1. Storage layout template (proposed provider: Google Drive)
+
+One root folder per channel, named after the channel brand (e.g. `Coffee.help/`):
 
 ```
-Coffee.help/
-  00_Brand_References/      brand_reference          CH-LIB-REF-####
-  01_Storyboards/           storyboard_frame         CH-###-S##-V##
-  02_Generated_Images/      image                    CH-###-S##-V##, CH-###-T##-V##
-  03_Video_Clips/           video_clip               CH-###-S##-V##
-  04_Audio/                 audio                    CH-###-A##-V##, CH-LIB-SND-####
-  05_Final_Videos/          final_video              CH-###-F##-V##
-  06_Production_Projects/   production_project       CH-###-F##-V## (project file), CH-LIB-TPL-####
+<Channel>/
+  00_Brand_References/      brand_reference          <P>-LIB-REF-####
+  01_Storyboards/           storyboard_frame         <P>-###-S##-V##
+  02_Generated_Images/      image                    <P>-###-S##-V##, <P>-###-T##-V##
+  03_Video_Clips/           video_clip               <P>-###-S##-V##
+  04_Audio/                 audio                    <P>-###-A##-V##, <P>-LIB-SND-####
+  05_Final_Videos/          final_video              <P>-###-F##-V##
+  06_Production_Projects/   production_project       <P>-###-F##-V## (project file), <P>-LIB-TPL-####
 ```
 
-Inside each top-level folder, group content-bound files by content id (e.g.
-`01_Storyboards/CH-001/`). Folder placement is a convenience only: **identity
-comes from the `asset_id` in the manifest, never from the folder path.**
+`<P>` is the channel's `asset_prefix`. Inside each top-level folder, group
+content-bound files by content id (e.g. `01_Storyboards/CH-001/`). Folder
+placement is a convenience only: **identity comes from the `asset_id` in the
+manifest, never from the folder path.**
 
 ## 2. Asset identifiers
 
 | Form | Pattern | Example | Use |
 |------|---------|---------|-----|
-| Content-bound | `CH-<content>-<part><nn>-V<variation>` | `CH-001-S01-V04` | Asset made for one content piece |
-| Library | `CH-LIB-<kind>-<nnnn>` | `CH-LIB-REF-0001` | Reusable across content (brand references, templates, sound) |
+| Content-bound | `<P>-<content>-<part><nn>-V<variation>` | `CH-001-S01-V04` | Asset made for one content piece |
+| Library | `<P>-LIB-<kind>-<nnnn>` | `CH-LIB-REF-0001` | Reusable across that channel's content (brand references, templates, sound) |
 
-- `CH` is the Coffee.help project prefix.
-- `<content>` is a 3-digit content sequence (`CH-001` = Coffee.help Video 001).
-  Content files declare it as `content_ref: CH-001` in front matter, which links
-  a content piece to its assets.
+- `<P>`: 2–4 uppercase letters, set once per channel in its `.aios.yaml`
+  (`asset_library.asset_prefix`). Must be unique across channels.
+- `<content>` is a 3-digit content sequence per channel (`CH-001` = Coffee.help
+  Video 001). Content files declare it as `content_ref` in front matter (see
+  [content-production](../content-production/CAPABILITY.md)).
 - `<part>`: `S` scene, `A` audio track, `T` thumbnail, `F` final export.
 - `V<variation>` is an alternative take of the same part (V01, V02, …).
 - Library `<kind>`: `REF` brand/style reference, `TPL` template or project file,
@@ -82,16 +90,16 @@ Names use no spaces or dates. Dates live in manifest metadata.
 
 ## 7. Access and permissions
 
-- **The owner controls storage.** Drive folders are created and shared by the
-  owner, not by agents.
+- **The owner controls storage.** Folders are created and shared by the owner,
+  not by agents.
 - **Least privilege:** grant each collaborator or agent integration access only
   to the folders it needs (e.g. read-only `00_Brand_References`, write to its own
   working folder).
 - **No personal credentials** are shared with agents or external collaborators.
   Access is through explicitly granted folder permissions or a future integration
   service (an engineer ADR with `gate:integration`).
-- Prefer a dedicated shared drive owned by the business over a personal "My Drive"
-  folder, so access survives personnel changes. This is an owner decision.
+- Prefer a business-owned shared drive over a personal "My Drive" folder, so
+  access survives personnel changes. This is an owner decision per channel.
 - Revoking a collaborator's storage access doesn't change their manifests;
   provenance stays intact.
 
@@ -108,9 +116,10 @@ proposed spec ─► generated frames/clips ─► approved assets ─► edit (
 - A `final_video` manifest lists every clip, frame, audio track, and template it
   uses in `source_assets`, so rights and restrictions can be traced from any
   published video back to its inputs.
-- The content file (`projects/coffee-help/content/<stage>/…`, see
-  [content-production](../../../organization/capabilities/content-production/CAPABILITY.md))
-  references its final asset IDs. Its **Sources & rights** section summarizes
-  the rights of the listed assets.
-- Publication follows the publishing capability: owner `gate:publish`, approval
-  tied to the exact commit, manual posting until an integration ADR is accepted.
+- The content file (`projects/<channel>/content/<stage>/…`, see
+  [content-production](../content-production/CAPABILITY.md)) references its
+  final asset IDs. Its **Sources & rights** section summarizes the rights of the
+  listed assets.
+- Publication follows the [publishing capability](../publishing/CAPABILITY.md):
+  owner `gate:publish`, approval tied to the exact commit, manual posting until
+  an integration ADR is accepted.

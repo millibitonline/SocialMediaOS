@@ -88,7 +88,7 @@ aios/                           Foundation (reusable AIOS)
   templates/                    ADR, Feature templates
 organization/
   ORGANIZATION.md               Org structure and rules
-  capabilities/                 content-production, publishing, analytics, financial-reporting
+  capabilities/                 content-production, publishing, analytics, financial-reporting, asset-management
   teams/channels/               Channels team + launch playbook
 templates/channel/              Copy to start a new channel
 projects/travel-lava/   First channel (planning)
